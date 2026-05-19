@@ -6,7 +6,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   imageText?: string;
-  variant?: 'red' | 'white';
+  variant?: 'red' | 'white' | 'black' | 'red-card';
   primaryButton?: { text: string; href: string };
   secondaryButton?: { text: string; href: string };
   className?: string;
@@ -23,10 +23,33 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   className = ''
 }) => {
   const isRed = variant === 'red';
-  const shadowColor = isRed ? 'shadow-hard' : 'shadow-hard-white';
-  const hoverShadow = isRed ? 'hover:shadow-[14px_14px_0_0_#E50012]' : 'hover:shadow-[14px_14px_0_0_#F4F4F4]';
+  const isWhite = variant === 'white';
+  const isBlack = variant === 'black';
+  const isRedCard = variant === 'red-card';
+
+  // Determine shadow color based on variant
+  // isRed -> Red shadow
+  // isWhite -> White shadow
+  // isBlack -> Black shadow
+  // isRedCard -> Black shadow
+  const shadowColor = isRed 
+    ? 'shadow-[10px_10px_0_0_#E50012]' 
+    : (isWhite ? 'shadow-[10px_10px_0_0_#F4F4F4]' : 'shadow-[10px_10px_0_0_#0F0F0F]');
+    
+  const hoverShadow = isRed 
+    ? 'hover:shadow-[14px_14px_0_0_#E50012]' 
+    : (isWhite ? 'hover:shadow-[14px_14px_0_0_#F4F4F4]' : 'hover:shadow-[14px_14px_0_0_#0F0F0F]');
 
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Background and Text colors for the main card
+  let cardBg = 'bg-p5-black text-p5-white';
+  if (isRedCard) {
+    cardBg = 'bg-p5-red text-p5-white';
+  }
+
+  // Border color based on variant
+  const borderColor = isWhite ? 'border-p5-white' : ((isBlack || isRedCard) ? 'border-p5-black' : 'border-p5-white');
 
   return (
     <>
@@ -34,7 +57,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <article 
         onClick={() => setIsExpanded(true)}
         className={`
-          bg-p5-black border-4 border-adaptive p-4 
+          ${cardBg} border-4 ${borderColor} p-4 
           flex flex-col gap-4 group 
           hover:-translate-y-3 hover:-translate-x-3 hover:-rotate-1 
           transition-all duration-300 relative cursor-pointer
@@ -58,7 +81,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </p>
           <div className="flex flex-wrap gap-2 mt-auto">
             {tags.map((tag, i) => (
-              <TechTag key={tag} name={tag} index={i} variant={isRed ? 'black' : 'white'} />
+              <TechTag key={tag} name={tag} index={i} variant={isWhite ? 'white' : 'black'} />
             ))}
           </div>
         </div>

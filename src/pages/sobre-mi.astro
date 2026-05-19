@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { CallingCard } from "../components/p5/CallingCard";
+import { P5Button } from "../components/p5/P5Button";
+import { TechTag } from "../components/p5/TechTag";
+import NavBar from "../components/p5/NavBar.astro";
+---
+
+<Layout title="Sobre mi - Alejandro Sandoval">
+  <!-- Navigation Bar -->
+  <NavBar currentPath="/sobre-mi" />
+
+  <div class="space-y-32 pb-40 px-4 md:px-8 w-full max-w-6xl mx-auto flex flex-col overflow-visible">
+    
+    <!-- TITULO PRINCIPAL -->
+    <div class="flex justify-center mt-8">
+      <h1 class="font-display text-5xl md:text-7xl bg-p5-red text-p5-white inline-block px-12 py-6 -skew-x-[6deg] shadow-[12px_12px_0_0_#0F0F0F] mb-8 border-4 border-p5-black">
+        <span class="inline-block skew-x-[6deg]">PROFILE ARCHIVE</span>
+      </h1>
+    </div>
+
+    <!-- 1. FILOSOFIA DE TRABAJO -->
+    <section class="relative">
+      <div class="absolute -top-6 -left-4 bg-p5-black text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-white shadow-[4px_4px_0_0_#E50012]">
+          <span class="inline-block skew-x-[6deg]">01. WORK PHILOSOPHY</span>
+      </div>
+      <div class="bg-p5-white border-4 border-p5-black p-8 md:p-12 shadow-hard pt-12 relative overflow-hidden group">
+        <div class="absolute right-0 bottom-0 opacity-5 pointer-events-none transform translate-x-4 translate-y-12">
+           <span class="font-display text-[200px] leading-none">"</span>
+        </div>
+        <p class="font-body text-xl md:text-2xl text-p5-black font-bold leading-relaxed border-l-8 border-p5-red pl-6 relative z-10">
+          "Mi enfoque se basa en la iteración rápida y la atención al detalle. Considero que el código limpio y la arquitectura modular son tan importantes como el impacto visual final. Busco crear experiencias que no solo funcionen de forma óptima, sino que transmitan personalidad y fluidez en cada interacción."
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. POR QUÉ VIDEOJUEGOS -->
+    <section class="relative flex justify-end">
+      <div class="w-full md:w-[90%] relative">
+        <div class="absolute -top-6 -right-4 bg-p5-red text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-black shadow-[4px_4px_0_0_#0F0F0F]">
+            <span class="inline-block skew-x-[6deg]">02. WHY GAMEDEV?</span>
+        </div>
+        <div class="bg-p5-black border-4 border-p5-red p-8 md:p-12 shadow-[12px_12px_0_0_#F4F4F4] pt-12 relative overflow-hidden group hover:border-p5-white transition-colors duration-500">
+          <div class="absolute inset-0 bg-halftone opacity-20"></div>
+          <div class="absolute -left-10 top-1/2 transform -translate-y-1/2 -rotate-90 opacity-10">
+             <span class="font-display text-8xl tracking-widest text-p5-red">PASSION</span>
+          </div>
+          <p class="font-body text-lg md:text-xl text-p5-white leading-relaxed relative z-10 border-r-4 border-p5-red pr-6 text-right">
+            Los videojuegos son el cruce definitivo entre tecnología, arte y psicología interactiva. Desde siempre me ha fascinado cómo un sistema de código puede cobrar vida, contar historias y crear mecánicas adictivas que retan la mente del jugador. Quiero trabajar en esta industria para empujar los límites de la interfaz, el diseño de sistemas y construir mundos que impacten visual y lúdicamente, rompiendo los moldes tradicionales.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HISTORIAL UNIVERSITARIO -->
+    <section class="relative">
+      <div class="absolute -top-6 -left-4 bg-p5-black text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-white shadow-[4px_4px_0_0_#E50012]">
+          <span class="inline-block skew-x-[6deg]">03. ACADEMIC TIMELINE</span>
+      </div>
+      <div class="bg-p5-white border-4 border-p5-black p-8 md:p-12 shadow-hard pt-16">
+        
+        <div class="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-p5-red">
+          
+          <!-- Timeline Item 1 -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-p5-black bg-p5-red shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[2px_2px_0_0_#0F0F0F] z-10 relative left-0 md:left-1/2 group-hover:scale-125 transition-transform duration-300">
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 border-p5-black bg-p5-white shadow-[6px_6px_0_0_#0F0F0F] group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg]">
+              <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
+                <h3 class="font-display text-3xl text-p5-black uppercase leading-none">Inicio de Carrera</h3>
+                <span class="font-mono text-sm bg-p5-black text-p5-white px-3 py-1 font-bold">2020 - 2021</span>
+              </div>
+              <p class="font-body text-base text-p5-black opacity-80 skew-x-[2deg]">
+                Introducción a los fundamentos de la programación orientada a objetos, bases de datos y metodologías ágiles. Comienzan los primeros prototipos lógicos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-p5-white bg-p5-black shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[2px_2px_0_0_#E50012] z-10 relative left-0 md:left-1/2 group-hover:scale-125 transition-transform duration-300">
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 border-p5-white bg-p5-black shadow-[6px_6px_0_0_#E50012] group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg]">
+              <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
+                <h3 class="font-display text-3xl text-p5-white uppercase leading-none">Desarrollo Web & UI/UX</h3>
+                <span class="font-mono text-sm bg-p5-red text-p5-white px-3 py-1 font-bold">2022 - 2023</span>
+              </div>
+              <p class="font-body text-base text-p5-white opacity-80 skew-x-[2deg]">
+                Profundización en frameworks modernos (React, Astro), bases de datos en la nube y principios de usabilidad centrada en el usuario.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-p5-black bg-p5-red shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[2px_2px_0_0_#0F0F0F] z-10 relative left-0 md:left-1/2 group-hover:scale-125 transition-transform duration-300">
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 border-p5-black bg-p5-white shadow-[6px_6px_0_0_#0F0F0F] group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg]">
+              <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
+                <h3 class="font-display text-3xl text-p5-black uppercase leading-none">Especialización en Videojuegos</h3>
+                <span class="font-mono text-sm bg-p5-black text-p5-white px-3 py-1 font-bold">2023 - Presente</span>
+              </div>
+              <p class="font-body text-base text-p5-black opacity-80 skew-x-[2deg]">
+                Dominio de Unity Engine, Modelado 3D técnico y arquitectura de sistemas complejos de juego. Desarrollo de proyectos integrales y Tesis.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GUSTOS Y HOBBIES -->
+    <section class="relative">
+      <div class="absolute -top-6 -right-4 bg-p5-red text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-black shadow-[4px_4px_0_0_#0F0F0F]">
+          <span class="inline-block skew-x-[6deg]">04. INTERESTS & HOBBIES</span>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pt-10">
+        
+        <div class="bg-p5-black border-4 border-p5-white aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:-rotate-3 transition-all cursor-crosshair group shadow-hard">
+          <span class="font-display text-5xl text-p5-white group-hover:text-p5-red transition-colors block mb-2">🎮</span>
+          <span class="font-display text-3xl text-p5-white group-hover:text-p5-red transition-colors uppercase leading-none">RPG'S & INDIES</span>
+          <p class="font-body text-xs text-p5-white mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Análisis de mecánicas por turnos y narrativas ramificadas.</p>
+        </div>
+
+        <div class="bg-p5-white border-4 border-p5-black aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:rotate-3 transition-all cursor-crosshair group shadow-hard">
+          <span class="font-display text-5xl text-p5-black group-hover:text-p5-red transition-colors block mb-2">🎨</span>
+          <span class="font-display text-3xl text-p5-black group-hover:text-p5-red transition-colors uppercase leading-none">DISEÑO DE INTERFACES</span>
+          <p class="font-body text-xs text-p5-black mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Estudio de UI diegética y estilos hiper-estilizados.</p>
+        </div>
+
+        <div class="bg-p5-black border-4 border-p5-red aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:-rotate-3 transition-all cursor-crosshair group shadow-hard">
+          <span class="font-display text-5xl text-p5-white group-hover:text-p5-red transition-colors block mb-2">🎬</span>
+          <span class="font-display text-3xl text-p5-white group-hover:text-p5-red transition-colors uppercase leading-none">ANIMACIÓN</span>
+          <p class="font-body text-xs text-p5-white mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Apreciación del 2D/3D y la dirección de arte experimental.</p>
+        </div>
+
+        <div class="bg-p5-red border-4 border-p5-black aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:rotate-3 transition-all cursor-crosshair group shadow-[8px_8px_0_0_#0F0F0F]">
+          <span class="font-display text-5xl text-p5-white group-hover:text-p5-black transition-colors block mb-2">🎵</span>
+          <span class="font-display text-3xl text-p5-white group-hover:text-p5-black transition-colors uppercase leading-none">SOUNDTRACKS</span>
+          <p class="font-body text-xs text-p5-white mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Jazz, Rock y composiciones interactivas de videojuegos.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. CALLING CARD (CONTACT) -->
+    <section class="mt-32 w-full flex flex-col items-center">
+      <div class="mb-12 flex flex-col items-center text-center">
+        <h2 class="font-display text-4xl text-p5-white bg-p5-red px-6 py-2 -skew-x-[6deg] inline-block shadow-sm">
+          <span class="inline-block skew-x-[6deg]">GET IN TOUCH</span>
+        </h2>
+        <p class="font-body text-p5-gray mt-4 max-w-lg">
+          ¿Interesado en mi perfil? Déjame tu mensaje y trabajemos juntos en la creación del próximo gran mundo interactivo.
+        </p>
+      </div>
+      
+      <CallingCard 
+        client:load
+        name="ALEJANDRO SANDOVAL"
+        email="alejandro.sandoval@example.com"
+        linkedin="https://www.linkedin.com/in/alejandro-sandoval/"
+        github="https://github.com/tato11901-wq"
+        className="w-full max-w-2xl"
+      />
+    </section>
+  </div>
+</Layout>

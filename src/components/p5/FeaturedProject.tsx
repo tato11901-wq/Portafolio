@@ -33,6 +33,7 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const isLeft = orientation === 'left';
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % media.length);
@@ -68,7 +69,16 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({
             
             {/* ÁREA DE MEDIOS */}
             <div className={`lg:col-span-7 flex flex-col justify-center ${isLeft ? '' : 'lg:order-2'}`}>
-              <div className={`relative aspect-video bg-p5-black border-4 border-p5-white overflow-hidden ${isLeft ? 'shadow-hard' : 'shadow-hard-white-inverse'} mb-4`}>
+              <div 
+                className={`relative aspect-video bg-p5-black border-4 border-p5-white overflow-hidden ${isLeft ? 'shadow-hard' : 'shadow-hard-white-inverse'} mb-4 cursor-pointer group`}
+                onClick={() => setIsFullscreen(true)}
+              >
+                {/* Visual Hint for Hover */}
+                <div className="absolute inset-0 bg-p5-red/20 opacity-0 group-hover:opacity-100 transition-opacity z-30 pointer-events-none flex items-center justify-center">
+                  <div className="bg-p5-black text-p5-white font-display text-2xl px-4 py-2 border-2 border-p5-white -skew-x-[6deg] tracking-widest scale-90 group-hover:scale-100 transition-transform">
+                    <span className="inline-block skew-x-[6deg]">EXPAND</span>
+                  </div>
+                </div>
                 
                 {/* Slides */}
                 <div className="w-full h-full relative">
@@ -89,10 +99,10 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({
                 {/* Nav Buttons */}
                 {media.length > 1 && (
                   <>
-                    <button onClick={prevSlide} className="absolute inset-y-0 left-0 z-20 bg-p5-black/90 text-p5-white p-3 border-r-4 border-p5-red hover:bg-p5-red transition-all">
+                    <button onClick={(e) => { e.stopPropagation(); prevSlide(); }} className="absolute inset-y-0 left-0 z-40 bg-p5-black/90 text-p5-white p-3 border-r-4 border-p5-red hover:bg-p5-red transition-all">
                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
                     </button>
-                    <button onClick={nextSlide} className="absolute inset-y-0 right-0 z-20 bg-p5-black/90 text-p5-white p-3 border-l-4 border-p5-red hover:bg-p5-red transition-all">
+                    <button onClick={(e) => { e.stopPropagation(); nextSlide(); }} className="absolute inset-y-0 right-0 z-40 bg-p5-black/90 text-p5-white p-3 border-l-4 border-p5-red hover:bg-p5-red transition-all">
                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
                     </button>
                   </>
@@ -197,14 +207,24 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({
               </div>
               
               <div className="space-y-6 flex flex-col">
-                <div className="aspect-video bg-p5-black border-4 border-adaptive relative overflow-hidden flex-1 shadow-hard">
+                <div 
+                  className="aspect-video bg-p5-black border-4 border-adaptive relative overflow-hidden flex-1 shadow-hard cursor-pointer group"
+                  onClick={(e) => { e.stopPropagation(); setIsFullscreen(true); }}
+                >
                    {media[currentSlide]?.type === 'video' ? (
-                     <video src={media[currentSlide].url} className="w-full h-full object-cover" autoPlay muted loop />
+                     <video src={media[currentSlide].url} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoPlay muted loop />
                    ) : (
-                     <img src={media[currentSlide]?.url} className="w-full h-full object-cover" alt="Media" />
+                     <img src={media[currentSlide]?.url} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Media" />
                    )}
                    <div className="absolute inset-0 bg-halftone opacity-20 pointer-events-none"></div>
-                   <div className="absolute top-2 left-2 font-mono text-[10px] bg-p5-red text-p5-white px-2 py-1 uppercase tracking-widest z-10 -skew-x-[6deg]">
+                   
+                   <div className="absolute inset-0 bg-p5-red/10 opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none flex items-center justify-center">
+                     <div className="bg-p5-black text-p5-white font-display text-xl px-3 py-1 border-2 border-p5-white -skew-x-[6deg] tracking-widest scale-90 group-hover:scale-100 transition-transform">
+                       <span className="inline-block skew-x-[6deg]">EXPAND</span>
+                     </div>
+                   </div>
+
+                   <div className="absolute top-2 left-2 font-mono text-[10px] bg-p5-red text-p5-white px-2 py-1 uppercase tracking-widest z-30 -skew-x-[6deg]">
                      <span className="inline-block skew-x-[6deg]">VISUAL_RECORD</span>
                    </div>
                 </div>
@@ -224,6 +244,52 @@ export const FeaturedProject: React.FC<FeaturedProjectProps> = ({
               </div>
             </div>
             
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox / Fullscreen Media Viewer */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-[100] bg-p5-black/95 flex items-center justify-center p-4 md:p-12 animate-fade-in" onClick={() => setIsFullscreen(false)}>
+          {/* Decorative Background */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'radial-gradient(#E50012 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
+          
+          <button 
+            className="absolute top-6 right-6 md:top-8 md:right-8 w-12 h-12 bg-p5-red text-p5-white font-display text-3xl flex items-center justify-center border-4 border-p5-white hover:bg-p5-white hover:text-p5-red hover:border-p5-red transition-all z-50 -skew-x-[6deg]"
+            onClick={() => setIsFullscreen(false)}
+          >
+            <span className="skew-x-[6deg]">X</span>
+          </button>
+          
+          <div className="relative w-full max-w-7xl aspect-video border-8 border-p5-white shadow-[16px_16px_0_0_#E50012] bg-p5-black" onClick={e => e.stopPropagation()}>
+            {media.map((item, index) => (
+              <div 
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              >
+                {item.type === 'video' ? (
+                  <video src={item.url} className="w-full h-full object-contain" autoPlay controls loop />
+                ) : (
+                  <img src={item.url} className="w-full h-full object-contain" alt={`Slide ${index}`} />
+                )}
+              </div>
+            ))}
+
+            {/* Lightbox Nav */}
+            {media.length > 1 && (
+              <>
+                <button onClick={(e) => { e.stopPropagation(); prevSlide(); }} className="absolute inset-y-0 left-0 w-16 md:w-24 flex items-center justify-center bg-transparent hover:bg-p5-red/20 text-p5-white transition-colors z-20 group">
+                  <svg className="w-12 h-12 md:w-16 md:h-16 group-hover:-translate-x-2 transition-transform drop-shadow-[2px_2px_0_#0F0F0F]" fill="currentColor" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+                </button>
+                <button onClick={(e) => { e.stopPropagation(); nextSlide(); }} className="absolute inset-y-0 right-0 w-16 md:w-24 flex items-center justify-center bg-transparent hover:bg-p5-red/20 text-p5-white transition-colors z-20 group">
+                  <svg className="w-12 h-12 md:w-16 md:h-16 group-hover:translate-x-2 transition-transform drop-shadow-[2px_2px_0_#0F0F0F]" fill="currentColor" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
+                </button>
+              </>
+            )}
+            
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-p5-black border-4 border-p5-red px-6 py-2 font-display text-xl text-p5-white z-20 -skew-x-[6deg]">
+              <span className="inline-block skew-x-[6deg]">SLIDE {currentSlide + 1} // {media.length}</span>
+            </div>
           </div>
         </div>
       )}

@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/p5/NavBar.astro";
+import { type MediaItem } from "../components/p5/FeaturedProject";
+import { ProjectViews } from "../components/p5/ProjectViews";
+
+const phantomStrideMedia: MediaItem[] = [
+  {
+    type: "image",
+    url: "/src/Assets/Proyectos/Referencia/Phantom_Stride_02.png",
+    filename: "GAME_CAPTURE_01.PNG",
+  },
+  {
+    type: "video",
+    url: "/src/Assets/Proyectos/Referencia/0503.mp4",
+    filename: "GAMEPLAY_DEMO_v2.MP4",
+  },
+];
+
+const cyberCoreMedia: MediaItem[] = [
+  {
+    type: "image",
+    url: "/src/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
+    filename: "MODEL_RENDER_01.PNG",
+  },
+];
+
+const devProjects = [
+  {
+    title: "PLANTAGOCHI",
+    context: "Game Development",
+    description: "Juego sobre cuidar plantas interactivas. Se desarrollaron diversas mecánicas de crecimiento en Unity.",
+    tags: ["Unity URP", "C# ASYNC"],
+    media: phantomStrideMedia,
+    primaryButton: { text: "WATCH DEMO", href: "#" },
+    secondaryButton: { text: "SOURCE CODE", href: "#" }
+  },
+  {
+    title: "RESONADOR VR",
+    context: "Virtual Reality",
+    description: "Simulador de exploración de la sala de un Resonador Magnético. Experiencia inmersiva que educa sobre procedimientos médicos de una forma interactiva.",
+    tags: ["Unity", "VR", "Oculus"],
+    media: phantomStrideMedia,
+    primaryButton: { text: "DOWNLOAD VR", href: "#" },
+    secondaryButton: { text: "SOURCE CODE", href: "#" }
+  },
+  {
+    title: "DINO GEEK",
+    context: "Web Application",
+    description: "Página de noticias orientada al mundo geek, abarcando Anime, Manga, Videojuegos, Cómics y más, usando una estética vibrante.",
+    tags: ["HTML", "CSS", "JS", "C#"],
+    media: cyberCoreMedia,
+    primaryButton: { text: "LIVE DEMO", href: "#" }
+  }
+];
+
+const modelProjects = [
+  {
+    title: "SVELIATY",
+    context: "Academic Project",
+    description: "Proyecto académico de combate RPG. Incluye una fórmula de escalado logístico y generador de personajes voxel modulares.",
+    tags: ["Blender", "Substance", "C#"],
+    media: cyberCoreMedia,
+    secondaryButton: { text: "DOWNLOAD EXE", href: "#" }
+  },
+  {
+    title: "CYBER CORE",
+    context: "Personal Project",
+    description: "Modelo 3D hard-surface de un núcleo cibernético. Optimizado para motores de juego con texturas PBR.",
+    tags: ["Maya", "ZBrush", "Substance Painter"],
+    media: cyberCoreMedia,
+    primaryButton: { text: "VIEW MODEL", href: "#" }
+  },
+  {
+    title: "PHANTOM BLADE",
+    context: "Prop Design",
+    description: "Diseño y modelado de un arma estilizada inspirada en fantasía oscura. Renderizado en tiempo real.",
+    tags: ["Blender", "Marmoset", "Photoshop"],
+    media: cyberCoreMedia,
+    secondaryButton: { text: "ARTSTATION", href: "#" }
+  }
+];
+---
+
+<Layout title="Proyectos - Alejandro Sandoval">
+  <!-- Navigation Bar -->
+  <NavBar currentPath="/proyectos" />
+
+  <div class="space-y-32 pb-40 px-2 md:px-6 w-full max-w-none mx-auto">
+    <section class="flex flex-col gap-12 mt-16 relative">
+      <h1 class="font-display text-5xl md:text-7xl bg-p5-black text-p5-white inline-block px-8 py-4 -skew-x-[6deg] shadow-hard self-center mb-8 transition-colors" id="project-title-heading">
+        <span class="inline-block skew-x-[6deg]">ALL PROJECTS</span>
+      </h1>
+
+      <ProjectViews 
+        client:load 
+        devProjects={devProjects} 
+        modelProjects={modelProjects} 
+      />
+    </section>
+  </div>
+</Layout>

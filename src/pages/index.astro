@@ -1,14 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/p5/NavBar.astro";
 import { TechTag } from "../components/p5/TechTag";
-import { P5Button } from "../components/p5/P5Button";
-import { ProjectCard } from "../components/p5/ProjectCard";
 import {
   FeaturedProject,
   type MediaItem,
 } from "../components/p5/FeaturedProject";
-import { CallingCard } from "../components/p5/CallingCard";
-import { StatHexagon } from "../components/p5/StatHexagon";
+import { ConfidantBar } from "../components/p5/ConfidantBar";
 import { Image } from "astro:assets";
 import profileImage from "../Assets/Images/Foto de perfil.png";
 
@@ -37,894 +35,62 @@ const cyberCoreMedia: MediaItem[] = [
 ];
 ---
 
-<Layout title="Design System - Portafolio P5">
-  <header class="mb-16 border-b-8 border-p5-red pb-8 relative">
-    <div
-      class="absolute -top-10 -left-10 w-32 h-32 bg-p5-red/20 -skew-x-[12deg] -z-10 blur-xl"
-    >
-    </div>
-    <h1
-      class="font-display text-8xl md:text-9xl text-p5-red uppercase tracking-tighter leading-none"
-    >
-      Design <span class="text-[var(--text-color)]">System</span>
-    </h1>
-    <p class="font-mono text-xl mt-4 opacity-70">
-      Project: Portfolio_Refactor_V1.tsx
-    </p>
-  </header>
+<Layout title="Portafolio - Alejandro Sandoval">
+  <!-- Navigation Bar -->
+  <NavBar currentPath="/" />
 
-  <div class="space-y-32 pb-40">
-    <!-- 1. SISTEMA DE REJILLA (Columnas) -->
-    <section class="space-y-12">
-      <div class="space-y-4">
-        <h2
-          class="font-display text-5xl bg-p5-black text-p5-white inline-block px-6 py-2 -skew-x-[6deg] shadow-hard"
-        >
-          <span class="inline-block skew-x-[6deg]">Layout Structure</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div class="space-y-4">
-          <h3 class="font-display text-3xl text-p5-red uppercase">
-            Desktop Grid (12 Units)
-          </h3>
-          <div
-            class="grid grid-cols-12 gap-2 bg-p5-black/20 p-2 border-2 border-adaptive border-dashed"
-          >
-            {
-              Array.from({ length: 12 }).map((_, i) => (
-                <div
-                  class={`col-span-1 h-8 ${i % 2 === 0 ? "bg-p5-red" : "bg-p5-black border border-white"} opacity-80`}
-                />
-              ))
-            }
-          </div>
-        </div>
-        <div class="space-y-4">
-          <h3 class="font-display text-3xl text-p5-red uppercase">
-            Android Grid (4 Units)
-          </h3>
-          <div class="max-w-[280px]">
-            <div
-              class="grid grid-cols-4 gap-2 bg-p5-black/20 p-2 border-4 border-p5-black shadow-hard"
-            >
-              {
-                Array.from({ length: 4 }).map((_, i) => (
-                  <div
-                    class={`col-span-1 h-12 ${i % 2 === 0 ? "bg-p5-red" : "bg-p5-black border border-white"}`}
-                  />
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. FUNDAMENTOS VISUALES (Tipografía, Colores, Patrones) -->
-    <section class="space-y-16">
-      <h2
-        class="font-display text-5xl bg-p5-red text-p5-white inline-block px-6 py-2 -skew-x-[6deg] shadow-hard-adaptive mb-4"
-      >
-        <span class="inline-block skew-x-[6deg]">Visual Fundamentals</span>
-      </h2>
-
-      <!-- Tipografía -->
-      <div
-        class="bg-panel border-4 border-adaptive shadow-hard-adaptive skew-x-[3deg]"
-      >
-        <div class="-skew-x-[3deg] p-8 space-y-8 text-[var(--text-color)]">
-          <h3
-            class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2 mb-6"
-          >
-            Tipografía
-          </h3>
-          <div class="border-b-2 border-adaptive/30 pb-6">
-            <div
-              class="font-display text-[80px] uppercase leading-none tracking-wide mb-2"
-            >
-              H1 Bebas Neue
-            </div>
-            <h4 class="font-mono font-bold text-p5-red">
-              H1 / 110px / Bebas Neue — Hero, Títulos masivos
-            </h4>
-          </div>
-          <div class="border-b-2 border-adaptive/30 pb-6">
-            <div
-              class="font-display text-[56px] uppercase leading-none tracking-wide mb-2"
-            >
-              H2 Bebas Neue 68px
-            </div>
-            <h4 class="font-mono font-bold text-p5-red">
-              H2 / 68px / Bebas Neue — Secciones principales
-            </h4>
-          </div>
-          <div class="border-b-2 border-adaptive/30 pb-6">
-            <div
-              class="font-display text-[36px] uppercase leading-none tracking-wide mb-2"
-            >
-              H3 Bebas Neue 42px
-            </div>
-            <h4 class="font-mono font-bold text-p5-red">
-              H3 / 42px / Bebas Neue — Títulos de cards
-            </h4>
-          </div>
-          <div class="border-b-2 border-adaptive/30 pb-6">
-            <div class="font-body text-[16px] leading-relaxed mb-2 max-w-2xl">
-              Body Inter 16px. Texto de cuerpo estándar para máxima legibilidad
-              en descripciones y lectura prolongada.
-            </div>
-            <h4 class="font-mono font-bold text-p5-red">
-              Body / 16px / Inter — Párrafos y descripciones
-            </h4>
-          </div>
-          <div class="pb-2">
-            <div class="font-mono text-[14px] leading-relaxed mb-2">
-              Mono Roboto Mono 14px. Código y Tags técnicos.
-            </div>
-            <h4 class="font-mono font-bold text-p5-red">
-              Mono / 14px / Roboto Mono — Etiquetas y código
-            </h4>
-          </div>
-        </div>
-      </div>
-
-      <!-- Colores -->
-      <div class="space-y-8 mt-16">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Paleta Primaria (Marca &amp; Contraste)
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-red shadow-hard-adaptive -skew-x-[6deg] border-4 border-p5-black group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Base Red</div>
-            <div class="font-mono text-xs font-bold">#E50012</div>
-            <p class="text-xs opacity-80">
-              Call To Actions principales, acentos fuertes y decoradores.
-            </p>
-          </div>
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-red-dark shadow-hard-adaptive -skew-x-[6deg] border-4 border-p5-black group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Dark Red</div>
-            <div class="font-mono text-xs font-bold">#990000</div>
-            <p class="text-xs opacity-80">
-              Estados "Hover" o presionado en botones principales.
-            </p>
-          </div>
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-red-light shadow-hard-adaptive -skew-x-[6deg] border-4 border-p5-black group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Light Red</div>
-            <div class="font-mono text-xs font-bold">#FF3344</div>
-            <p class="text-xs opacity-80">
-              Highlights visuales o destellos de energía en animaciones.
-            </p>
-          </div>
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-yellow shadow-hard-adaptive -skew-x-[6deg] border-4 border-p5-black group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Cyber Yellow</div>
-            <div class="font-mono text-xs font-bold">#FFD700</div>
-            <p class="text-xs opacity-80">
-              Alertas, insignias de proyectos destacados ("Elite").
-            </p>
-          </div>
-        </div>
-
-        <h3 class="font-display text-4xl border-b-2 border-adaptive pb-2 mt-12">
-          Paleta Secundaria (Estructura &amp; Fondos)
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-black shadow-hard-adaptive skew-x-[6deg] border-4 border-adaptive group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Ink Black</div>
-            <div class="font-mono text-xs font-bold">#0F0F0F</div>
-            <p class="text-xs opacity-80">
-              Fondo principal (default), contornos obligatorios de botones
-              rojos.
-            </p>
-          </div>
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-white shadow-hard-adaptive -skew-x-[6deg] border-4 border-p5-black group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Paper White</div>
-            <div class="font-mono text-xs font-bold">#F4F4F4</div>
-            <p class="text-xs opacity-80">
-              Texto sobre fondos negros, o fondo en Light Mode.
-            </p>
-          </div>
-          <div class="space-y-2 group">
-            <div
-              class="w-full h-28 bg-p5-gray shadow-hard-adaptive skew-x-[6deg] border-4 border-adaptive group-hover:-translate-y-1 transition-transform"
-            >
-            </div>
-            <div class="font-display text-2xl pt-2 uppercase">Shadow Gray</div>
-            <div class="font-mono text-xs font-bold">#2C2C2C</div>
-            <p class="text-xs opacity-80">
-              Cards secundarias, bordes inactivos o ruido de fondo.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Patrones -->
-      <div class="space-y-4 mt-16">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Patrones de Fondo
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-          <div
-            class="h-32 bg-p5-red relative border-4 border-p5-black overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 opacity-50 mix-blend-multiply"
-              style="background-image: radial-gradient(#0F0F0F 2px, transparent 2px); background-size: 8px 8px;"
-            >
-            </div>
-            <span
-              class="absolute bottom-2 left-2 bg-p5-black text-p5-white px-2 py-1 font-mono text-xs font-bold -skew-x-[6deg]"
-              ><span class="inline-block skew-x-[6deg]">Halftone</span></span
-            >
-          </div>
-          <div
-            class="h-32 bg-p5-yellow relative border-4 border-p5-black overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 opacity-30 mix-blend-multiply"
-              style="background-image: repeating-linear-gradient(45deg, #0F0F0F 0, #0F0F0F 2px, transparent 2px, transparent 8px);"
-            >
-            </div>
-            <span
-              class="absolute bottom-2 left-2 bg-p5-black text-p5-white px-2 py-1 font-mono text-xs font-bold -skew-x-[6deg]"
-              ><span class="inline-block skew-x-[6deg]">Stripes</span></span
-            >
-          </div>
-          <div
-            class="h-32 bg-p5-black relative border-4 border-p5-white overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 opacity-20"
-              style="background-image: radial-gradient(#F4F4F4 1px, transparent 1px); background-size: 16px 16px;"
-            >
-            </div>
-            <span
-              class="absolute bottom-2 left-2 bg-p5-white text-p5-black px-2 py-1 font-mono text-xs font-bold -skew-x-[6deg]"
-              ><span class="inline-block skew-x-[6deg]">Grid</span></span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Iconografía -->
-      <div class="space-y-6 mt-16">
-        <h3 class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2">
-          Iconography & Symbols
-        </h3>
-        <p class="font-body text-base opacity-90 max-w-3xl leading-relaxed">
-          En este estilo visual, los íconos rara vez son amigables o redondeados. Deben transmitir urgencia, estilo y agresividad. Se construyen a base de formas geométricas duras (estrellas puntiagudas, flechas masivas, exclamaciones gruesas).
-        </p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="bg-panel border-4 border-adaptive p-6 flex flex-col items-center justify-center gap-4 shadow-hard-adaptive group transition-transform hover:-translate-y-2">
-            <svg class="w-12 h-12 text-p5-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-            <span class="font-mono text-xs tracking-widest font-bold uppercase">Highlight</span>
-          </div>
-          <div class="bg-panel border-4 border-adaptive p-6 flex flex-col items-center justify-center gap-4 shadow-hard-adaptive group transition-transform hover:-translate-y-2">
-            <svg class="w-12 h-12 text-p5-red" fill="currentColor" viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/><path d="M0 24V0h24v24H0z" fill="none"/></svg>
-            <span class="font-mono text-xs tracking-widest font-bold uppercase">Directional</span>
-          </div>
-          <div class="bg-panel border-4 border-adaptive p-6 flex flex-col items-center justify-center gap-4 shadow-hard-adaptive group transition-transform hover:-translate-y-2">
-            <svg class="w-12 h-12 text-p5-red" fill="currentColor" viewBox="0 0 24 24"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
-            <span class="font-mono text-xs tracking-widest font-bold uppercase">Alert</span>
-          </div>
-          <div class="bg-panel border-4 border-adaptive p-6 flex flex-col items-center justify-center gap-4 shadow-hard-adaptive group transition-transform hover:-translate-y-2">
-            <svg class="w-12 h-12 text-p5-red" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-9-5a5 5 0 110 10 5 5 0 010-10z"/></svg>
-            <span class="font-mono text-xs tracking-widest font-bold uppercase">Target</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. COMPONENTES PRIMITIVOS (Botones, Tags y Contenedores) -->
-    <section class="space-y-16">
-      <h2
-        class="font-display text-5xl bg-p5-black text-p5-white inline-block px-6 py-2 -skew-x-[6deg] shadow-hard"
-      >
-        <span class="inline-block skew-x-[6deg]">Primitive UI Components</span>
-      </h2>
-
-      <!-- Reglas de Contenedores -->
-      <div
-        class="bg-panel border-l-8 border-p5-red p-6 shadow-hard-adaptive mb-12"
-      >
-        <h3 class="font-display text-3xl mb-2 uppercase">General UI Rules</h3>
-        <ul class="font-body text-sm space-y-2 opacity-90 list-disc pl-4">
-          <li>
-            <strong>Border Radius:</strong> Siempre <code
-              class="bg-p5-black text-p5-white px-1">0px</code
-            >. Nunca se usan esquinas redondeadas. Todo es afilado.
-          </li>
-          <li>
-            <strong>Angulación (Skew):</strong> Los paneles usan <code
-              class="bg-p5-black text-p5-white px-1">skew-x-[3deg]</code
-            > o <code class="bg-p5-black text-p5-white px-1"
-              >-skew-x-[6deg]</code
-            > para romper la verticalidad. El contenido interior siempre debe des-angularse
-            con el valor inverso para que el texto sea legible.
-          </li>
-          <li>
-            <strong>Rotación:</strong> Textos superpuestos y "tiritas" usan <code
-              class="bg-p5-black text-p5-white px-1">rotate-2</code
-            > o <code class="bg-p5-black text-p5-white px-1">-rotate-2</code>.
-          </li>
-          <li>
-            <strong>Sombras:</strong> Uso exclusivo de "Hard Shadows" (sin desenfoque/blur).
-            Sombras sólidas desplazadas típicamente en <code
-              class="bg-p5-black text-p5-white px-1">6px 6px</code
-            > o <code class="bg-p5-black text-p5-white px-1">12px 12px</code>.
-          </li>
-        </ul>
-      </div>
-
-      <!-- Containers / Panels -->
-      <div class="space-y-6">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Structural Containers
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <!-- Skewed Adaptive Panel -->
-          <div class="group flex flex-col">
-            <h4
-              class="font-mono text-sm text-p5-red mb-2 uppercase tracking-widest"
-            >
-              Adaptive Skewed Panel
-            </h4>
-            <div
-              class="bg-panel border-4 border-adaptive shadow-hard-adaptive skew-x-[3deg] min-h-[160px] transition-transform hover:-translate-y-1"
-            >
-              <div
-                class="-skew-x-[3deg] p-6 flex items-center justify-center h-full"
-              >
-                <span class="font-display text-2xl opacity-50"
-                  >Content Area</span
-                >
-              </div>
-            </div>
-            <p class="font-body text-sm opacity-80 mt-4 leading-relaxed">
-              <strong>Uso:</strong> Contenedor base primario para agrupar contenido
-              complejo (Sección Hero, Confidant Bars, Tarjetas de Información).<br
-              />
-              <strong>Config:</strong>
-              <code class="text-p5-red text-xs"
-                >bg-panel border-4 border-adaptive shadow-hard-adaptive
-                skew-x-[3deg]</code
-              >. Se adapta automáticamente al modo oscuro/claro.
-            </p>
-          </div>
-
-          <!-- Hard Black Halftone Panel -->
-          <div class="group flex flex-col">
-            <h4
-              class="font-mono text-sm text-p5-red mb-2 uppercase tracking-widest"
-            >
-              Hard Black + Halftone
-            </h4>
-            <div
-              class="bg-p5-black border-4 border-p5-white shadow-hard relative overflow-hidden min-h-[160px] transition-transform hover:-translate-y-1"
-            >
-              <div class="absolute inset-0 bg-halftone opacity-10"></div>
-              <div
-                class="relative z-10 p-6 flex items-center justify-center h-full"
-              >
-                <span class="font-display text-2xl text-p5-white opacity-50"
-                  >Content Area</span
-                >
-              </div>
-            </div>
-            <p class="font-body text-sm opacity-80 mt-4 leading-relaxed">
-              <strong>Uso:</strong> Elementos que necesitan destacar agresivamente
-              (Tarjetas de Proyecto en grilla, Botoneras). Siempre es negro, sin importar
-              el modo.<br />
-              <strong>Config:</strong>
-              <code class="text-p5-red text-xs"
-                >bg-p5-black border-4 border-p5-white shadow-hard</code
-              >. Utiliza textura Halftone interna para reducir el peso de un
-              bloque negro completamente sólido.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Text Containers -->
-      <div class="space-y-6">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Text & Label Containers
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Rotated Title Badge -->
-          <div class="space-y-4">
-            <h4 class="font-mono text-sm text-p5-red uppercase tracking-widest">
-              Rotated Badge
-            </h4>
-            <div
-              class="p-4 bg-panel border-2 border-dashed border-adaptive min-h-[120px] flex items-center justify-center overflow-hidden"
-            >
-              <div
-                class="bg-p5-black -rotate-2 border-p5-red shadow-hard-white text-p5-white p-3 border-4 inline-block"
-              >
-                <span class="font-display text-2xl tracking-widest uppercase"
-                  >SECTION_TITLE</span
-                >
-              </div>
-            </div>
-            <p class="font-body text-xs opacity-80 leading-relaxed">
-              <strong>Uso:</strong> Títulos superpuestos masivos en tarjetas de proyecto.<br
-              />
-              <strong>Config:</strong>
-              <code class="text-p5-red"
-                >-rotate-2 border-4 shadow-hard-white</code
-              >. Rompe la grilla intencionalmente y no requiere que el texto se
-              des-rote internamente.
-            </p>
-          </div>
-
-          <!-- Dialogue Box Base -->
-          <div class="space-y-4">
-            <h4 class="font-mono text-sm text-p5-red uppercase tracking-widest">
-              Dialogue Box
-            </h4>
-            <div
-              class="p-4 bg-panel border-2 border-dashed border-adaptive min-h-[120px] flex items-center justify-center"
-            >
-              <div
-                class="bg-p5-black p-4 border-4 border-p5-white -skew-y-[2deg] shadow-[8px_8px_0_0_#E50012] w-full relative"
-              >
-                <span class="font-display text-xl text-p5-white opacity-50"
-                  >Texto de narrativa...</span
-                >
-              </div>
-            </div>
-            <p class="font-body text-xs opacity-80 leading-relaxed">
-              <strong>Uso:</strong> Narrativa o descripciones de personaje (Calling
-              Card).<br />
-              <strong>Config:</strong>
-              <code class="text-p5-red"
-                >-skew-y-[2deg] shadow-[X_Y_0_0_#E50012]</code
-              >. Se inclina ligeramente en Y (arriba/abajo), no en X.
-            </p>
-          </div>
-
-          <!-- Cutout Text -->
-          <div class="space-y-4">
-            <h4 class="font-mono text-sm text-p5-red uppercase tracking-widest">
-              Cutout Highlights
-            </h4>
-            <div
-              class="p-4 bg-panel border-2 border-dashed border-adaptive min-h-[120px] flex items-center justify-center flex-col gap-2"
-            >
-              <span
-                class="cutout-white font-display text-2xl tracking-widest uppercase"
-                >HIGHLIGHT</span
-              >
-              <span
-                class="cutout-black font-display text-2xl tracking-widest uppercase text-p5-white"
-                >HIGHLIGHT</span
-              >
-            </div>
-            <p class="font-body text-xs opacity-80 leading-relaxed">
-              <strong>Uso:</strong> Resaltar palabras específicas dentro de un título
-              o texto, emulando letras de recortes de revista.<br />
-              <strong>Config:</strong> Clase <code class="text-p5-red"
-                >cutout-white / cutout-black</code
-              > en global.css.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Interactive Elements -->
-      <div class="space-y-6">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Interactive Elements
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div
-            class="bg-p5-black p-8 border-4 border-p5-white shadow-hard relative overflow-hidden flex flex-col"
-          >
-            <div class="absolute inset-0 bg-halftone opacity-10"></div>
-            <h3
-              class="font-display text-3xl text-p5-white mb-6 relative z-10 uppercase italic"
-            >
-              Button Variations
-            </h3>
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10 flex-1"
-            >
-              <P5Button variant="secondary">SOURCE CODE</P5Button>
-              <P5Button variant="outline">LIVE DEMO</P5Button>
-              <P5Button variant="download">DOWNLOAD EXE</P5Button>
-              <P5Button variant="action">WATCH VIDEO</P5Button>
-            </div>
-            <p
-              class="font-body text-sm text-p5-white opacity-80 mt-6 relative z-10 leading-relaxed"
-            >
-              <strong>Uso:</strong> Componente <code class="text-p5-red"
-                >&lt;P5Button&gt;</code
-              >.<br />
-              <strong>Config:</strong> Animaciones hover asimétricas. El texto siempre
-              debe estar en mayúsculas (`uppercase`) usando `Bebas Neue`.
-            </p>
-          </div>
-
-          <div
-            class="bg-panel border-4 border-adaptive p-8 shadow-hard-adaptive skew-x-[3deg] flex flex-col"
-          >
-            <div class="-skew-x-[3deg] flex-1 flex flex-col">
-              <h3 class="font-display text-3xl mb-6 uppercase italic">
-                Tech Tags
-              </h3>
-              <div
-                class="flex flex-wrap gap-4 mb-6 flex-1 items-start content-start"
-              >
-                <TechTag name="React" index={0} />
-                <TechTag name="Astro" index={1} />
-                <TechTag name="TypeScript" index={2} />
-                <TechTag name="Unity" index={3} />
-                <TechTag name="C#" index={4} />
-                <TechTag name="Blender" index={5} />
-              </div>
-              <p class="font-body text-sm opacity-80 leading-relaxed">
-                <strong>Uso:</strong> Indicadores de herramientas. Alternan entre
-                <code class="text-p5-red">rotate-1</code> y <code
-                  class="text-p5-red">-rotate-2</code
-                > según su índice para dar un aspecto desordenado natural.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. COMPONENTES COMPUESTOS -->
-    <section class="space-y-24">
-      <h2
-        class="font-display text-5xl inline-block border-b-8 border-p5-red pr-8 mb-4"
-      >
-        Composite Components
-      </h2>
-
-      <!-- Diálogo P5 -->
-      <div class="space-y-4">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Dialogue Box
-        </h3>
-        <div
-          class="relative bg-p5-black p-6 border-4 border-p5-white min-h-[120px] -skew-y-[1deg] shadow-[12px_12px_0_0_#E50012]"
-        >
-          <div
-            class="absolute -top-6 left-8 bg-p5-red text-p5-white font-display text-2xl px-6 py-1 -skew-x-[12deg] border-2 border-p5-white"
-          >
-            <span class="inline-block skew-x-[12deg]">CAMILO SANDOVAL</span>
-          </div>
-          <p class="font-body text-p5-white text-lg leading-relaxed pt-2 pl-4">
-            Alejandro es un profesional apasionado por la tecnologia y el
-            desarrollo de software. Con experiencia en diversas areas de la
-            programacion, ha logrado crear proyectos innovadores y de calidad.
-          </p>
-          <div class="absolute bottom-4 right-4 animate-bounce">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="var(--color-p5-red)"
-              ><polygon points="0,0 20,0 10,20"></polygon></svg
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact Card -->
-      <div class="space-y-4">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Calling Card
-        </h3>
-        <CallingCard
-          client:visible
-          name="Alejandro Sandoval"
-          email="asandoval123871@gmail.com"
-          linkedin="https://www.linkedin.com/in/alejandro-sandoval-8a9209285/"
-          github="https://github.com/tato11901-wq"
-        />
-      </div>
-
-      <!-- Barras de Confidente -->
-      <div class="space-y-8">
-        <h3
-          class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
-        >
-          Confidant Bars (Skills)
-        </h3>
-        <p
-          class="font-mono text-sm border-l-4 border-p5-red pl-4 opacity-80 max-w-2xl mb-4"
-        >
-          Visualización de dominio en stacks técnicos. El "Rank" indica nivel de
-          maestría
-        </p>
-        <div
-          class="bg-panel border-4 border-adaptive shadow-hard-adaptive skew-x-[3deg]"
-        >
-          <div class="-skew-x-[3deg] p-8 space-y-6">
-            <div class="group">
-              <div class="flex justify-between items-end mb-1">
-                <span class="font-display text-2xl italic">UNITY ENGINE</span>
-                <span class="text-p5-red font-display text-xl">RANK 8</span>
-              </div>
-              <div
-                class="h-8 border-4 border-p5-black bg-p5-white relative overflow-hidden -skew-x-[12deg]"
-              >
-                <div
-                  class="h-full bg-p5-red-dark w-[80%] transition-colors duration-300 group-hover:bg-p5-red"
-                >
-                </div>
-                <div
-                  class="absolute inset-0 opacity-20 pointer-events-none"
-                  style="background-image: radial-gradient(black 1px, transparent 1px); background-size: 4px 4px;"
-                >
-                </div>
-              </div>
-            </div>
-            <div class="group">
-              <div class="flex justify-between items-end mb-1">
-                <span class="font-display text-2xl italic">ASTRO / REACT</span>
-                <span class="text-p5-red font-display text-xl">RANK 5</span>
-              </div>
-              <div
-                class="h-8 border-4 border-p5-black bg-p5-white relative overflow-hidden -skew-x-[12deg]"
-              >
-                <div
-                  class="h-full bg-p5-red-dark w-[50%] transition-colors duration-300 group-hover:bg-p5-red"
-                >
-                </div>
-                <div
-                  class="absolute inset-0 opacity-20 pointer-events-none"
-                  style="background-image: radial-gradient(black 1px, transparent 1px); background-size: 4px 4px;"
-                >
-                </div>
-              </div>
-            </div>
-            <div class="group">
-              <div class="flex justify-between items-end mb-1">
-                <span class="font-display text-2xl italic"
-                  >C# / PYTHON / JAVA</span
-                >
-                <span class="text-p5-red font-display text-xl">RANK 7</span>
-              </div>
-              <div
-                class="h-8 border-4 border-p5-black bg-p5-white relative overflow-hidden -skew-x-[12deg]"
-              >
-                <div
-                  class="h-full bg-p5-red-dark w-[70%] transition-colors duration-300 group-hover:bg-p5-red"
-                >
-                </div>
-                <div
-                  class="absolute inset-0 opacity-20 pointer-events-none"
-                  style="background-image: radial-gradient(black 1px, transparent 1px); background-size: 4px 4px;"
-                >
-                </div>
-              </div>
-            </div>
-            <div class="group">
-              <div class="flex justify-between items-end mb-1">
-                <span class="font-display text-2xl italic">MAYA / MUDBOX</span>
-                <span class="text-p5-red font-display text-xl">RANK 6</span>
-              </div>
-              <div
-                class="h-8 border-4 border-p5-black bg-p5-white relative overflow-hidden -skew-x-[12deg]"
-              >
-                <div
-                  class="h-full bg-p5-red-dark w-[60%] transition-colors duration-300 group-hover:bg-p5-red"
-                >
-                </div>
-                <div
-                  class="absolute inset-0 opacity-20 pointer-events-none"
-                  style="background-image: radial-gradient(black 1px, transparent 1px); background-size: 4px 4px;"
-                >
-                </div>
-              </div>
-            </div>
-            <div class="group">
-              <div class="flex justify-between items-end mb-1">
-                <span class="font-display text-2xl italic">UI / UX / FIGMA</span
-                >
-                <span class="text-p5-red font-display text-xl">RANK 6</span>
-              </div>
-              <div
-                class="h-8 border-4 border-p5-black bg-p5-white relative overflow-hidden -skew-x-[12deg]"
-              >
-                <div
-                  class="h-full bg-p5-red-dark w-[60%] transition-colors duration-300 group-hover:bg-p5-red"
-                >
-                </div>
-                <div
-                  class="absolute inset-0 opacity-20 pointer-events-none"
-                  style="background-image: radial-gradient(black 1px, transparent 1px); background-size: 4px 4px;"
-                >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. SECCIÓN HERO / PERFIL -->
-    <section class="space-y-8 relative">
-      <h2
-        class="font-display text-5xl inline-block border-b-8 border-p5-red pr-8 mb-4"
-      >
-        Hero Component
-      </h2>
-      <div
-        class="border-4 border-adaptive bg-panel shadow-hard-adaptive skew-x-[3deg]"
-      >
-        <div
-          class="-skew-x-[3deg] p-8 flex flex-col md:flex-row gap-16 items-center"
-        >
+  <div class="space-y-32 pb-40 px-2 md:px-6 w-full max-w-none mx-auto">
+    <!-- SECCIÓN HERO / PERFIL -->
+    <section id="sobre-mi" class="space-y-8 relative mt-16">
+      <div class="border-4 border-adaptive bg-panel shadow-hard-adaptive skew-x-[3deg]">
+        <div class="-skew-x-[3deg] p-8 lg:p-12 xl:p-16 flex flex-col lg:flex-row gap-16 xl:gap-32 items-center justify-between">
           <!-- Avatar -->
-          <div
-            class="flex flex-col items-center gap-6 shrink-0 mx-auto md:mx-0"
-          >
-            <div
-              class="relative group cursor-pointer w-64 h-64 md:w-80 md:h-80"
-            >
-              <div
-                class="absolute inset-0 bg-p5-red -skew-x-[6deg] translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300 border-4 border-p5-black"
-              >
-              </div>
-              <div
-                class="absolute inset-0 border-4 border-p5-black -skew-x-[6deg] overflow-hidden bg-p5-white z-10"
-              >
-                <div
-                  class="skew-x-[6deg] w-[120%] h-full -ml-[10%] relative scale-110 group-hover:scale-100 transition-transform duration-500"
-                >
-                  <Image
-                    src={profileImage}
-                    alt="Alejandro Sandoval"
-                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  <div
-                    class="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply"
-                    style="background-image: radial-gradient(#0F0F0F 2px, transparent 2px); background-size: 8px 8px;"
-                  >
-                  </div>
+          <div class="flex flex-col items-center gap-6 shrink-0 mx-auto md:mx-0">
+            <div class="relative group cursor-pointer w-64 h-64 md:w-80 md:h-80">
+              <div class="absolute inset-0 bg-p5-red -skew-x-[6deg] translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300 border-4 border-p5-black"></div>
+              <div class="absolute inset-0 border-4 border-p5-black -skew-x-[6deg] overflow-hidden bg-p5-white z-10">
+                <div class="skew-x-[6deg] w-[120%] h-full -ml-[10%] relative scale-110 group-hover:scale-100 transition-transform duration-500">
+                  <Image src={profileImage} alt="Alejandro Sandoval" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  <div class="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply" style="background-image: radial-gradient(#0F0F0F 2px, transparent 2px); background-size: 8px 8px;"></div>
                 </div>
               </div>
-              <div
-                class="absolute -bottom-6 -left-6 bg-p5-yellow px-4 py-1 border-4 border-p5-black -rotate-6 shadow-hard z-20 group-hover:-rotate-3 group-hover:scale-110 transition-transform duration-300"
-              >
-                <span
-                  class="font-display text-2xl text-p5-black uppercase tracking-widest leading-none"
-                  >LVL 23</span
-                >
+              <div class="absolute -bottom-6 -left-6 bg-p5-yellow px-4 py-1 border-4 border-p5-black -rotate-6 shadow-hard z-20 group-hover:-rotate-3 group-hover:scale-110 transition-transform duration-300">
+                <span class="font-display text-2xl text-p5-black uppercase tracking-widest leading-none">LVL 23</span>
               </div>
             </div>
-            <div
-              class="font-mono text-xs text-[var(--text-color)] opacity-80 bg-panel border-2 border-adaptive px-4 py-2 -skew-x-[6deg] shadow-sm mt-4 text-center"
-            >
+            <div class="font-mono text-xs text-[var(--text-color)] opacity-80 bg-panel border-2 border-adaptive px-4 py-2 -skew-x-[6deg] shadow-sm mt-4 text-center">
               <span class="inline-block skew-x-[6deg]">
-                &gt; STATUS: <span
-                  class="text-p5-red font-bold tracking-widest animate-pulse"
-                  >OPEN TO WORK</span
-                >
+                &gt; STATUS: <span class="text-p5-red font-bold tracking-widest animate-pulse">OPEN TO WORK</span>
               </span>
             </div>
           </div>
 
           <!-- Texto Hero -->
           <div class="flex-1 space-y-6">
-            <h3
-              class="font-display text-5xl md:text-7xl uppercase leading-none text-[var(--text-color)] flex flex-wrap items-center gap-3"
-            >
+            <h3 class="font-display text-5xl md:text-7xl uppercase leading-none text-[var(--text-color)] flex flex-wrap items-center gap-3">
               Alejandro
-              <span
-                class="text-p5-red inline-block -skew-x-[6deg] border-4 border-p5-black px-3 pb-1 bg-p5-black shadow-[4px_4px_0_0_#E50012]"
-              >
+              <span class="text-p5-red inline-block -skew-x-[6deg] border-4 border-p5-black px-3 pb-1 bg-p5-black shadow-[4px_4px_0_0_#E50012]">
                 <span class="inline-block skew-x-[6deg]">Sandoval</span>
               </span>
             </h3>
-            <p
-              class="font-body text-[var(--text-color)] opacity-90 text-lg border-l-4 border-p5-red pl-4 leading-relaxed"
-            >
-              Desarrollador de videojuegos y experiencias interactivas.
-              Especializado en Unity y Game Desing Quiero contar historias
-              através de mecánicas, personajes y aventuras inolvidables.
+            <p class="font-body text-[var(--text-color)] opacity-90 text-lg border-l-4 border-p5-red pl-4 leading-relaxed">
+              Desarrollador de videojuegos y experiencias interactivas. Especializado en Unity y Game Desing Quiero contar historias através de mecánicas, personajes y aventuras inolvidables.
             </p>
 
             <div class="pt-4">
-              <h4
-                class="font-display text-2xl mb-4 text-[var(--text-color)] uppercase"
-              >
-                Tech Stack
-              </h4>
+              <h4 class="font-display text-2xl mb-4 text-[var(--text-color)] uppercase">Tech Stack</h4>
               <div class="flex flex-wrap gap-3 items-center">
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block skew-x-[6deg]">Unity</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block -skew-x-[6deg]">C#</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block skew-x-[6deg]">Python</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block -skew-x-[6deg]">Java</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block skew-x-[6deg]"
-                    >JS / HTML5 / CSS</span
-                  ></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block -skew-x-[6deg]">React</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block skew-x-[6deg]">Astro</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block -skew-x-[6deg]">Blender</span
-                  ></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block skew-x-[6deg]">Figma</span></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block -skew-x-[6deg]">Substance</span
-                  ></span
-                >
-                <span
-                  class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"
-                  ><span class="inline-block skew-x-[6deg]">Git / GitHub</span
-                  ></span
-                >
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Unity</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">C#</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Python</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">Java</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">JS / HTML5 / CSS</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">React</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Astro</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">Blender</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Figma</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">Substance</span></span>
+                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Git / GitHub</span></span>
               </div>
             </div>
           </div>
@@ -932,49 +98,64 @@ const cyberCoreMedia: MediaItem[] = [
       </div>
     </section>
 
-    <!-- 6. GALERÍA DE PROYECTOS -->
-    <section class="space-y-12">
-      <h2
-        class="font-display text-6xl bg-p5-black text-p5-white inline-block px-8 py-3 -skew-x-[6deg] shadow-hard"
-      >
-        <span class="inline-block skew-x-[6deg]">Target Projects</span>
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <ProjectCard
-          client:visible
-          title="Proyect 1"
-          description="Proyecto realizado en unity para tatatatatatatata"
-          tags={["C#", "Unity", "Editor Tooling"]}
-          primaryButton={{ text: "SOURCE CODE", href: "#" }}
-          secondaryButton={{ text: "VIEW DOCS", href: "#" }}
-        />
-        <ProjectCard
-          client:visible
-          title="DinoGeek"
-          description="Pagina de noticias orientadas al mundo geek, Anime, Manga, Videojuegos, Cómics y más. "
-          tags={["HTML", "CSS", "JS", "C#"]}
-          variant="white"
-          primaryButton={{ text: "LIVE DEMO", href: "#" }}
-          secondaryButton={{ text: "COMPONENT DOCS", href: "#" }}
-        />
-        <ProjectCard
-          client:visible
-          title="Simulador Resonador"
-          description="Simulador de exploracion de la sala de un Resonador Magnético, Experiencia de Realidad Virtual realizada en Unity"
-          tags={["Unity", "VR", "C#"]}
-          primaryButton={{ text: "DOWNLOAD VR", href: "#" }}
-          secondaryButton={{ text: "SOURCE CODE", href: "#" }}
-        />
+    <!-- Barras de Confidente -->
+    <section class="space-y-8">
+      <h3 class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2 inline-block -skew-x-[6deg]">
+        <span class="inline-block skew-x-[6deg]">Confidant Skills</span>
+      </h3>
+      <div class="bg-panel border-4 border-adaptive shadow-hard-adaptive skew-x-[3deg]">
+        <div class="-skew-x-[3deg] p-8 lg:p-12 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
+          <ConfidantBar 
+            client:load
+            title="UNITY ENGINE" 
+            rank={8} 
+            percentage={80} 
+            description="Experiencia avanzada desarrollando sistemas complejos, shaders en URP/HDRP, y arquitecturas modulares para juegos 2D y 3D." 
+          />
+          <ConfidantBar 
+            client:load
+            title="ASTRO / REACT" 
+            rank={5} 
+            percentage={50} 
+            description="Creación de interfaces web modernas y estáticas, integrando frameworks y componentes reutilizables con un enfoque en el rendimiento." 
+          />
+          <ConfidantBar 
+            client:load
+            title="C# / PYTHON / JAVA" 
+            rank={7} 
+            percentage={70} 
+            description="Sólidos fundamentos en programación orientada a objetos, scripting, automatización de tareas y desarrollo de backend." 
+          />
+          <ConfidantBar 
+            client:load
+            title="MAYA / MUDBOX" 
+            rank={6} 
+            percentage={60} 
+            description="Modelado 3D, retopología y texturizado para assets integrados en motores de videojuegos." 
+          />
+          <ConfidantBar 
+            client:load
+            title="UI / UX / FIGMA" 
+            rank={6} 
+            percentage={60} 
+            description="Diseño de wireframes, prototipos interactivos y sistemas de diseño enfocados en la experiencia de usuario final." 
+          />
+        </div>
       </div>
     </section>
 
-    <!-- 7. PROYECTOS DESTACADOS (CARRUSEL) -->
-    <section class="flex flex-col gap-12 mt-16">
+    <!-- PROYECTOS DESTACADOS -->
+    <section id="proyectos" class="flex flex-col gap-12 mt-16">
+      <h2 class="font-display text-5xl md:text-6xl bg-p5-black text-p5-white inline-block px-8 py-3 -skew-x-[6deg] shadow-hard self-start mb-8">
+        <span class="inline-block skew-x-[6deg]">Featured Projects</span>
+      </h2>
+
+      <!-- Project 1 -->
       <FeaturedProject
         client:load
         title="PLANTAGOCHI"
-        context="Project_Context"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        context="Game Development"
+        description="Juego sobre cuidar plantas interactivas. Se desarrollaron diversas mecánicas de crecimiento en Unity."
         tags={["Unity URP", "C# ASYNC"]}
         media={phantomStrideMedia}
         orientation="left"
@@ -982,16 +163,37 @@ const cyberCoreMedia: MediaItem[] = [
         secondaryButton={{ text: "SOURCE CODE", href: "#" }}
       />
 
+      <!-- Project 2 -->
       <FeaturedProject
         client:load
         title="SVELIATY"
-        context="Project_Context"
-        description="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        tags={["Blender", "Substance"]}
+        context="Academic Project"
+        description="Proyecto académico de combate RPG. Incluye una fórmula de escalado logístico y generador de personajes voxel modulares."
+        tags={["Blender", "Substance", "C#"]}
         media={cyberCoreMedia}
         orientation="right"
         secondaryButton={{ text: "DOWNLOAD EXE", href: "#" }}
       />
+      
+      <!-- Project 3 -->
+      <FeaturedProject
+        client:load
+        title="RESONADOR VR"
+        context="Virtual Reality"
+        description="Simulador de exploración de la sala de un Resonador Magnético. Experiencia inmersiva que educa sobre procedimientos médicos de una forma interactiva."
+        tags={["Unity", "VR", "Oculus"]}
+        media={phantomStrideMedia}
+        orientation="left"
+        primaryButton={{ text: "DOWNLOAD VR", href: "#" }}
+        secondaryButton={{ text: "SOURCE CODE", href: "#" }}
+      />
+
+      <div class="flex justify-center mt-12">
+        <a href="/proyectos" class="font-display text-4xl bg-p5-red text-p5-white px-12 py-6 -skew-x-[6deg] shadow-[8px_8px_0_0_#0F0F0F] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#0F0F0F] transition-all flex items-center gap-4 group">
+          <span class="inline-block skew-x-[6deg]">VIEW ALL PROJECTS</span>
+          <svg class="w-8 h-8 skew-x-[6deg] group-hover:translate-x-2 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+        </a>
+      </div>
     </section>
   </div>
 </Layout>

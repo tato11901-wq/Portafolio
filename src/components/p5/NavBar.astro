@@ -1,0 +1,56 @@
+---
+const { currentPath } = Astro.props;
+---
+<nav class="sticky top-0 z-50 w-full bg-p5-black border-b-4 border-p5-red shadow-hard py-4 px-8 mb-16 flex justify-between items-center">
+  <div class="flex-1 flex justify-start items-center">
+    <a href="/" class="font-body font-black text-lg md:text-2xl text-p5-white hover:text-p5-red transition-colors -skew-x-[6deg] inline-block tracking-widest">
+      <span class="skew-x-[6deg] block">ImJustSandie</span>
+    </a>
+  </div>
+  
+  <ul class="flex-none flex gap-4 md:gap-16 items-center justify-center">
+    <li>
+      <a href="/" class={`font-display text-lg md:text-2xl tracking-widest transition-colors -skew-x-[6deg] inline-block ${currentPath === '/' ? 'text-p5-red border-b-2 border-p5-red' : 'text-p5-white hover:text-p5-red'}`}>
+        <span class="skew-x-[6deg] block lang-es">INICIO</span>
+        <span class="skew-x-[6deg] block lang-en">HOME</span>
+      </a>
+    </li>
+    <li>
+      <a href="/proyectos" class={`font-display text-lg md:text-2xl tracking-widest transition-colors -skew-x-[6deg] inline-block ${currentPath === '/proyectos' ? 'text-p5-red border-b-2 border-p5-red' : 'text-p5-white hover:text-p5-red'}`}>
+        <span class="skew-x-[6deg] block lang-es">PROYECTOS</span>
+        <span class="skew-x-[6deg] block lang-en">PROJECTS</span>
+      </a>
+    </li>
+    <li>
+      <a href="/sobre-mi" class={`font-display text-lg md:text-2xl tracking-widest transition-colors -skew-x-[6deg] inline-block ${currentPath === '/sobre-mi' ? 'text-p5-red border-b-2 border-p5-red' : 'text-p5-white hover:text-p5-red'}`}>
+        <span class="skew-x-[6deg] block lang-es">SOBRE MI</span>
+        <span class="skew-x-[6deg] block lang-en">ABOUT ME</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="flex-1 flex justify-end">
+    <button class="flex relative w-[4.5rem] md:w-[5.5rem] h-8 md:h-10 items-center justify-end cursor-pointer group border-none bg-transparent scale-75 md:scale-100 origin-right" id="lang-toggle-btn">
+      <div class="btn-esp absolute left-0 top-0 w-10 md:w-12 h-6 md:h-7 flex items-center justify-center border-2 border-p5-black -skew-x-[12deg] transition-all group-hover:scale-105">
+        <span class="skew-x-[12deg] font-display text-sm md:text-base tracking-wider pointer-events-none mt-1">ESP</span>
+      </div>
+      <div class="btn-en absolute right-0 bottom-0 w-10 md:w-12 h-6 md:h-7 flex items-center justify-center border-2 border-p5-black -skew-x-[12deg] transition-all group-hover:scale-105">
+        <span class="skew-x-[12deg] font-display text-sm md:text-base tracking-wider pointer-events-none mt-1">EN</span>
+      </div>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const langToggleBtn = document.getElementById('lang-toggle-btn');
+  
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      const currentLang = document.documentElement.lang || 'es';
+      const newLang = currentLang === 'es' ? 'en' : 'es';
+      
+      document.documentElement.lang = newLang;
+      localStorage.setItem('p5-portfolio-lang', newLang);
+    });
+  }
+</script>
