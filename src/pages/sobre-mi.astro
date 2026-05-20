@@ -1,166 +1,384 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { CallingCard } from "../components/p5/CallingCard";
-import { P5Button } from "../components/p5/P5Button";
-import { TechTag } from "../components/p5/TechTag";
 import NavBar from "../components/p5/NavBar.astro";
+
+type LocalizedText = {
+  es: string;
+  en: string;
+};
+
+type TimelineItem = {
+  year: string;
+  title: LocalizedText;
+  description: LocalizedText;
+  inverted?: boolean;
+};
+
+const timelineItems: TimelineItem[] = [
+  {
+    year: "2022",
+    title: {
+      es: "Inicio de carrera",
+      en: "Starting my degree",
+    },
+    description: {
+      es: "Comencé Ingeniería Multimedia y consolidé mis bases en programación, lógica, matemáticas y fundamentos técnicos que hoy sostienen mi proceso creativo.",
+      en: "I began my Multimedia Engineering degree and built strong foundations in programming, logic, mathematics, and technical thinking that still support my creative process today.",
+    },
+  },
+  {
+    year: "2023",
+    title: {
+      es: "Primer contacto con Unity",
+      en: "First contact with Unity",
+    },
+    description: {
+      es: "Descubrí Unity y C# a través de prototipos tempranos. Aunque esos primeros experimentos fueron caóticos, me ayudaron a entender el motor, iterar más rápido y perderle el miedo a construir sistemas.",
+      en: "I discovered Unity and C# through early prototypes. Those first experiments were messy, but they taught me how the engine works, how to iterate faster, and how to become comfortable building systems.",
+    },
+    inverted: true,
+  },
+  {
+    year: "2024",
+    title: {
+      es: "Modelado 3D y pipeline visual",
+      en: "3D modeling and visual pipeline",
+    },
+    description: {
+      es: "Empecé a trabajar con modelado 3D en Maya, aprendiendo desde bloqueos con primitivas hasta modelos listos para texturizado, rigging y animación dentro de un pipeline de producción.",
+      en: "I started working with 3D modeling in Maya, learning everything from primitive blockouts to production-ready models prepared for texturing, rigging, and animation.",
+    },
+  },
+  {
+    year: "2024",
+    title: {
+      es: "Diseño de interfaces interactivas",
+      en: "Interactive interface design",
+    },
+    description: {
+      es: "Profundicé en UI/UX para experiencias digitales, explorando wireframes, prototipos y decisiones visuales que conectaran la funcionalidad con una identidad clara.",
+      en: "I went deeper into UI/UX for digital experiences, exploring wireframes, prototypes, and visual decisions that connect usability with a strong identity.",
+    },
+    inverted: true,
+  },
+  {
+    year: "2025",
+    title: {
+      es: "Primeros proyectos integrales",
+      en: "First end-to-end projects",
+    },
+    description: {
+      es: "Comencé a unir programación, arte y diseño en proyectos más completos, trabajando sistemas jugables, presentación visual y una intención narrativa más clara dentro de cada prototipo.",
+      en: "I started combining programming, art, and design in more complete projects, building playable systems, visual presentation, and clearer narrative intent into each prototype.",
+    },
+  },
+  {
+    year: "2025",
+    title: {
+      es: "Desarrollo web para portafolio y herramientas",
+      en: "Web development for portfolio and tools",
+    },
+    description: {
+      es: "Llevé mis habilidades a la web con Astro, React y frontend moderno para construir piezas de portafolio, interfaces personalizadas y experiencias más sólidas fuera del motor.",
+      en: "I brought my skills to the web using Astro, React, and modern frontend tooling to build portfolio pieces, custom interfaces, and stronger experiences outside the game engine.",
+    },
+    inverted: true,
+  },
+  {
+    year: "2026",
+    title: {
+      es: "Búsqueda de primer rol profesional",
+      en: "Pursuing my first professional role",
+    },
+    description: {
+      es: "Actualmente estoy cerrando mi etapa universitaria mientras refino mi portafolio y busco una oportunidad donde pueda aportar como game developer, gameplay programmer o desarrollador de experiencias interactivas.",
+      en: "I am currently wrapping up university while refining my portfolio and looking for an opportunity where I can contribute as a game developer, gameplay programmer, or interactive experience developer.",
+    },
+  },
+];
+
+const hobbyCards = [
+  {
+    emoji: "RPG",
+    variant: "dark",
+    title: {
+      es: "RPGS E INDIES",
+      en: "RPGS & INDIES",
+    },
+    description: {
+      es: "Analizo sistemas por turnos, progresión y narrativa ramificada.",
+      en: "I study turn-based systems, progression loops, and branching narrative.",
+    },
+  },
+  {
+    emoji: "UI",
+    variant: "light",
+    title: {
+      es: "DISEÑO DE INTERFACES",
+      en: "INTERFACE DESIGN",
+    },
+    description: {
+      es: "Me interesan la UI diegética y los estilos visuales con mucha identidad.",
+      en: "I am drawn to diegetic UI and visual styles with strong identity.",
+    },
+  },
+  {
+    emoji: "3D",
+    variant: "dark-red",
+    title: {
+      es: "ANIMACIÓN",
+      en: "ANIMATION",
+    },
+    description: {
+      es: "Disfruto estudiar actuación, timing y dirección de arte en 2D y 3D.",
+      en: "I enjoy studying acting, timing, and art direction in both 2D and 3D.",
+    },
+  },
+  {
+    emoji: "OST",
+    variant: "red",
+    title: {
+      es: "SOUNDTRACKS",
+      en: "SOUNDTRACKS",
+    },
+    description: {
+      es: "Escucho jazz, rock y música de videojuegos como combustible creativo.",
+      en: "I listen to jazz, rock, and game soundtracks as creative fuel.",
+    },
+  },
+];
 ---
 
-<Layout title="Sobre mi - Alejandro Sandoval">
-  <!-- Navigation Bar -->
+<Layout title="Sobre mí - Alejandro Sandoval">
   <NavBar currentPath="/sobre-mi" />
 
   <div class="space-y-32 pb-40 px-4 md:px-8 w-full max-w-6xl mx-auto flex flex-col overflow-visible">
-    
-    <!-- TITULO PRINCIPAL -->
     <div class="flex justify-center mt-8">
       <h1 class="font-display text-5xl md:text-7xl bg-p5-red text-p5-white inline-block px-12 py-6 -skew-x-[6deg] shadow-[12px_12px_0_0_#0F0F0F] mb-8 border-4 border-p5-black">
-        <span class="inline-block skew-x-[6deg]">PROFILE ARCHIVE</span>
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">ARCHIVO DE PERFIL</span>
+          <span class="lang-en">PROFILE ARCHIVE</span>
+        </span>
       </h1>
     </div>
 
-    <!-- 1. FILOSOFIA DE TRABAJO -->
+    <section class="relative">
+      <div class="absolute -top-6 -left-4 bg-p5-red text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-black shadow-[4px_4px_0_0_#0F0F0F]">
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">QUIÉN SOY</span>
+          <span class="lang-en">WHO AM I</span>
+        </span>
+      </div>
+      <div class="bg-p5-black border-4 border-p5-red p-8 md:p-12 shadow-[12px_12px_0_0_#F4F4F4] pt-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-halftone opacity-10 pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10">
+          <div class="flex flex-col gap-4">
+            <div class="bg-p5-white text-p5-black px-4 py-3 border-4 border-p5-black -skew-x-[6deg] shadow-hard">
+              <span class="inline-block skew-x-[6deg] font-mono text-xs text-p5-red uppercase tracking-widest block mb-1">
+                <span class="lang-es">UBICACIÓN</span>
+                <span class="lang-en">LOCATION</span>
+              </span>
+              <span class="inline-block skew-x-[6deg] font-display text-2xl uppercase leading-none">
+                Colombia
+              </span>
+            </div>
+            <div class="bg-p5-white text-p5-black px-4 py-3 border-4 border-p5-black -skew-x-[6deg] shadow-hard">
+              <span class="inline-block skew-x-[6deg] font-mono text-xs text-p5-red uppercase tracking-widest block mb-1">
+                <span class="lang-es">PERFIL</span>
+                <span class="lang-en">PROFILE</span>
+              </span>
+              <span class="inline-block skew-x-[6deg] font-display text-2xl uppercase leading-none">
+                Game Dev &amp; UI
+              </span>
+            </div>
+            <div class="bg-p5-white text-p5-black px-4 py-3 border-4 border-p5-black -skew-x-[6deg] shadow-hard">
+              <span class="inline-block skew-x-[6deg] font-mono text-xs text-p5-red uppercase tracking-widest block mb-1">
+                <span class="lang-es">EXPERIENCIA</span>
+                <span class="lang-en">EXPERIENCE</span>
+              </span>
+              <span class="inline-block skew-x-[6deg] font-display text-2xl uppercase leading-none">
+                <span class="lang-es">1+ AÑO</span>
+                <span class="lang-en">1+ YEAR</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="md:col-span-2 flex flex-col gap-6 justify-center">
+            <p class="font-body text-lg md:text-xl text-p5-white leading-relaxed border-l-8 border-p5-red pl-6">
+              <span class="lang-es">Soy Alejandro Sandoval, ingeniero multimedia enfocado en crear experiencias interactivas. Combino programación, diseño visual, narrativa y experiencia de usuario para construir mundos que se sientan vivos y memorables para quienes los recorren.</span>
+              <span class="lang-en">I am Alejandro Sandoval, a multimedia engineer focused on building interactive experiences. I combine programming, visual design, narrative, and user experience to create worlds that feel alive and memorable for the people who explore them.</span>
+            </p>
+            <p class="font-body text-base text-p5-white opacity-70 leading-relaxed border-l-4 border-p5-white/30 pl-6">
+              <span class="lang-es">Me especializo en Unity y C#, con experiencia adicional en modelado 3D, diseño de interfaces y desarrollo web. Actualmente estoy cerrando mi etapa universitaria mientras busco mi primera oportunidad profesional en la industria.</span>
+              <span class="lang-en">I specialize in Unity and C#, with additional experience in 3D modeling, interface design, and web development. I am currently finishing university while looking for my first professional opportunity in the industry.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="relative">
       <div class="absolute -top-6 -left-4 bg-p5-black text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-white shadow-[4px_4px_0_0_#E50012]">
-          <span class="inline-block skew-x-[6deg]">01. WORK PHILOSOPHY</span>
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">01. FILOSOFÍA DE TRABAJO</span>
+          <span class="lang-en">01. WORK PHILOSOPHY</span>
+        </span>
       </div>
       <div class="bg-p5-white border-4 border-p5-black p-8 md:p-12 shadow-hard pt-12 relative overflow-hidden group">
         <div class="absolute right-0 bottom-0 opacity-5 pointer-events-none transform translate-x-4 translate-y-12">
-           <span class="font-display text-[200px] leading-none">"</span>
+          <span class="font-display text-[200px] leading-none">"</span>
         </div>
         <p class="font-body text-xl md:text-2xl text-p5-black font-bold leading-relaxed border-l-8 border-p5-red pl-6 relative z-10">
-          "Mi enfoque se basa en la iteración rápida y la atención al detalle. Considero que el código limpio y la arquitectura modular son tan importantes como el impacto visual final. Busco crear experiencias que no solo funcionen de forma óptima, sino que transmitan personalidad y fluidez en cada interacción."
+          <span class="lang-es">Trabajo desde la iteración y la escucha. Me gusta diseñar sistemas a partir de necesidades reales, mantener una arquitectura limpia y modular, y asegurar que lo visual no sea un adorno sino parte esencial de la experiencia. Busco que cada proyecto funcione bien, escale con criterio y también transmita intención, personalidad y cuidado.</span>
+          <span class="lang-en">I work through iteration and close listening. I like designing systems around real needs, keeping the architecture clean and modular, and making sure the visual layer is not decoration but an essential part of the experience. I want every project to work well, scale thoughtfully, and also communicate intention, personality, and care.</span>
         </p>
       </div>
     </section>
 
-    <!-- 2. POR QUÉ VIDEOJUEGOS -->
     <section class="relative flex justify-end">
       <div class="w-full md:w-[90%] relative">
         <div class="absolute -top-6 -right-4 bg-p5-red text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-black shadow-[4px_4px_0_0_#0F0F0F]">
-            <span class="inline-block skew-x-[6deg]">02. WHY GAMEDEV?</span>
+          <span class="inline-block skew-x-[6deg]">
+            <span class="lang-es">02. POR QUÉ GAMEDEV</span>
+            <span class="lang-en">02. WHY GAMEDEV</span>
+          </span>
         </div>
         <div class="bg-p5-black border-4 border-p5-red p-8 md:p-12 shadow-[12px_12px_0_0_#F4F4F4] pt-12 relative overflow-hidden group hover:border-p5-white transition-colors duration-500">
           <div class="absolute inset-0 bg-halftone opacity-20"></div>
           <div class="absolute -left-10 top-1/2 transform -translate-y-1/2 -rotate-90 opacity-10">
-             <span class="font-display text-8xl tracking-widest text-p5-red">PASSION</span>
+            <span class="font-display text-8xl tracking-widest text-p5-red">PASSION</span>
           </div>
           <p class="font-body text-lg md:text-xl text-p5-white leading-relaxed relative z-10 border-r-4 border-p5-red pr-6 text-right">
-            Los videojuegos son el cruce definitivo entre tecnología, arte y psicología interactiva. Desde siempre me ha fascinado cómo un sistema de código puede cobrar vida, contar historias y crear mecánicas adictivas que retan la mente del jugador. Quiero trabajar en esta industria para empujar los límites de la interfaz, el diseño de sistemas y construir mundos que impacten visual y lúdicamente, rompiendo los moldes tradicionales.
+            <span class="lang-es">Siempre me han atraído los mundos capaces de atraparte por su historia, sus personajes, sus mecánicas y la forma en que todo dialoga para decir algo. Los videojuegos, para mí, son el punto de encuentro perfecto entre tecnología, arte e interacción. Por eso quiero formar parte de equipos que busquen dejar huella a través de experiencias inolvidables.</span>
+            <span class="lang-en">I have always been drawn to worlds that pull you in through story, characters, mechanics, and the way every layer works together to say something meaningful. To me, games are the perfect meeting point between technology, art, and interaction. That is why I want to be part of teams that aim to leave a mark through unforgettable experiences.</span>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- 3. HISTORIAL UNIVERSITARIO -->
     <section class="relative">
       <div class="absolute -top-6 -left-4 bg-p5-black text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-white shadow-[4px_4px_0_0_#E50012]">
-          <span class="inline-block skew-x-[6deg]">03. ACADEMIC TIMELINE</span>
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">03. TIMELINE ACADÉMICA</span>
+          <span class="lang-en">03. ACADEMIC TIMELINE</span>
+        </span>
       </div>
       <div class="bg-p5-white border-4 border-p5-black p-8 md:p-12 shadow-hard pt-16">
-        
-        <div class="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-p5-red">
-          
-          <!-- Timeline Item 1 -->
-          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-p5-black bg-p5-red shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[2px_2px_0_0_#0F0F0F] z-10 relative left-0 md:left-1/2 group-hover:scale-125 transition-transform duration-300">
-            </div>
-            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 border-p5-black bg-p5-white shadow-[6px_6px_0_0_#0F0F0F] group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg]">
-              <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
-                <h3 class="font-display text-3xl text-p5-black uppercase leading-none">Inicio de Carrera</h3>
-                <span class="font-mono text-sm bg-p5-black text-p5-white px-3 py-1 font-bold">2020 - 2021</span>
+        <details class="group">
+          <summary class="list-none cursor-pointer">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-p5-black text-p5-white border-4 border-p5-red px-6 py-5 -skew-x-[3deg] shadow-[8px_8px_0_0_#E50012] hover:-translate-y-1 transition-transform">
+              <div class="skew-x-[3deg]">
+                <div class="font-display text-3xl uppercase leading-none">
+                  <span class="lang-es">DESPLEGAR RECORRIDO</span>
+                  <span class="lang-en">EXPAND JOURNEY</span>
+                </div>
+                <p class="font-body text-sm opacity-80 mt-2">
+                  <span class="lang-es">7 hitos sobre cómo fui construyendo mi perfil.</span>
+                  <span class="lang-en">7 milestones that show how I built my profile.</span>
+                </p>
               </div>
-              <p class="font-body text-base text-p5-black opacity-80 skew-x-[2deg]">
-                Introducción a los fundamentos de la programación orientada a objetos, bases de datos y metodologías ágiles. Comienzan los primeros prototipos lógicos.
-              </p>
-            </div>
-          </div>
-
-          <!-- Timeline Item 2 -->
-          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-p5-white bg-p5-black shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[2px_2px_0_0_#E50012] z-10 relative left-0 md:left-1/2 group-hover:scale-125 transition-transform duration-300">
-            </div>
-            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 border-p5-white bg-p5-black shadow-[6px_6px_0_0_#E50012] group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg]">
-              <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
-                <h3 class="font-display text-3xl text-p5-white uppercase leading-none">Desarrollo Web & UI/UX</h3>
-                <span class="font-mono text-sm bg-p5-red text-p5-white px-3 py-1 font-bold">2022 - 2023</span>
+              <div class="font-mono text-xs uppercase tracking-widest border-2 border-p5-white px-3 py-2 self-start md:self-auto">
+                <span class="lang-es">&gt; CLICK PARA ABRIR</span>
+                <span class="lang-en">&gt; CLICK TO OPEN</span>
               </div>
-              <p class="font-body text-base text-p5-white opacity-80 skew-x-[2deg]">
-                Profundización en frameworks modernos (React, Astro), bases de datos en la nube y principios de usabilidad centrada en el usuario.
-              </p>
             </div>
-          </div>
+          </summary>
 
-          <!-- Timeline Item 3 -->
-          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-p5-black bg-p5-red shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[2px_2px_0_0_#0F0F0F] z-10 relative left-0 md:left-1/2 group-hover:scale-125 transition-transform duration-300">
-            </div>
-            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 border-p5-black bg-p5-white shadow-[6px_6px_0_0_#0F0F0F] group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg]">
-              <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
-                <h3 class="font-display text-3xl text-p5-black uppercase leading-none">Especialización en Videojuegos</h3>
-                <span class="font-mono text-sm bg-p5-black text-p5-white px-3 py-1 font-bold">2023 - Presente</span>
-              </div>
-              <p class="font-body text-base text-p5-black opacity-80 skew-x-[2deg]">
-                Dominio de Unity Engine, Modelado 3D técnico y arquitectura de sistemas complejos de juego. Desarrollo de proyectos integrales y Tesis.
-              </p>
-            </div>
+          <div class="mt-10 space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-p5-red">
+            {timelineItems.map((item, index) => {
+              const isDark = item.inverted;
+              const isRight = index % 2 === 1;
+              return (
+                <div class={`relative flex items-center justify-between md:justify-normal group ${isRight ? "md:flex-row-reverse" : ""}`}>
+                  <div class={`flex items-center justify-center w-10 h-10 rounded-full border-4 shrink-0 z-10 group-hover:scale-125 transition-transform duration-300 ${isDark ? "border-p5-white bg-p5-black shadow-[2px_2px_0_0_#E50012]" : "border-p5-black bg-p5-red shadow-[2px_2px_0_0_#0F0F0F]"}`}>
+                  </div>
+                  <div class={`w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 border-4 group-hover:-translate-y-2 transition-transform duration-300 -skew-x-[2deg] ${isDark ? "border-p5-white bg-p5-black shadow-[6px_6px_0_0_#E50012]" : "border-p5-black bg-p5-white shadow-[6px_6px_0_0_#0F0F0F]"}`}>
+                    <div class="flex flex-wrap gap-4 items-center justify-between mb-4 skew-x-[2deg]">
+                      <h3 class={`font-display text-3xl uppercase leading-none ${isDark ? "text-p5-white" : "text-p5-black"}`}>
+                        <span class="lang-es">{item.title.es}</span>
+                        <span class="lang-en">{item.title.en}</span>
+                      </h3>
+                      <span class={`font-mono text-sm px-3 py-1 font-bold ${isDark ? "bg-p5-red text-p5-white" : "bg-p5-black text-p5-white"}`}>
+                        {item.year}
+                      </span>
+                    </div>
+                    <p class={`font-body text-base opacity-80 skew-x-[2deg] ${isDark ? "text-p5-white" : "text-p5-black"}`}>
+                      <span class="lang-es">{item.description.es}</span>
+                      <span class="lang-en">{item.description.en}</span>
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-
-        </div>
+        </details>
       </div>
     </section>
 
-    <!-- 4. GUSTOS Y HOBBIES -->
     <section class="relative">
       <div class="absolute -top-6 -right-4 bg-p5-red text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-black shadow-[4px_4px_0_0_#0F0F0F]">
-          <span class="inline-block skew-x-[6deg]">04. INTERESTS & HOBBIES</span>
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">04. INTERESES Y HOBBIES</span>
+          <span class="lang-en">04. INTERESTS & HOBBIES</span>
+        </span>
       </div>
-      
+
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pt-10">
-        
-        <div class="bg-p5-black border-4 border-p5-white aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:-rotate-3 transition-all cursor-crosshair group shadow-hard">
-          <span class="font-display text-5xl text-p5-white group-hover:text-p5-red transition-colors block mb-2">🎮</span>
-          <span class="font-display text-3xl text-p5-white group-hover:text-p5-red transition-colors uppercase leading-none">RPG'S & INDIES</span>
-          <p class="font-body text-xs text-p5-white mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Análisis de mecánicas por turnos y narrativas ramificadas.</p>
-        </div>
-
-        <div class="bg-p5-white border-4 border-p5-black aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:rotate-3 transition-all cursor-crosshair group shadow-hard">
-          <span class="font-display text-5xl text-p5-black group-hover:text-p5-red transition-colors block mb-2">🎨</span>
-          <span class="font-display text-3xl text-p5-black group-hover:text-p5-red transition-colors uppercase leading-none">DISEÑO DE INTERFACES</span>
-          <p class="font-body text-xs text-p5-black mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Estudio de UI diegética y estilos hiper-estilizados.</p>
-        </div>
-
-        <div class="bg-p5-black border-4 border-p5-red aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:-rotate-3 transition-all cursor-crosshair group shadow-hard">
-          <span class="font-display text-5xl text-p5-white group-hover:text-p5-red transition-colors block mb-2">🎬</span>
-          <span class="font-display text-3xl text-p5-white group-hover:text-p5-red transition-colors uppercase leading-none">ANIMACIÓN</span>
-          <p class="font-body text-xs text-p5-white mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Apreciación del 2D/3D y la dirección de arte experimental.</p>
-        </div>
-
-        <div class="bg-p5-red border-4 border-p5-black aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 hover:rotate-3 transition-all cursor-crosshair group shadow-[8px_8px_0_0_#0F0F0F]">
-          <span class="font-display text-5xl text-p5-white group-hover:text-p5-black transition-colors block mb-2">🎵</span>
-          <span class="font-display text-3xl text-p5-white group-hover:text-p5-black transition-colors uppercase leading-none">SOUNDTRACKS</span>
-          <p class="font-body text-xs text-p5-white mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto">Jazz, Rock y composiciones interactivas de videojuegos.</p>
-        </div>
-
+        {hobbyCards.map((card) => (
+          <div
+            class={`aspect-square flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition-all cursor-crosshair group ${
+              card.variant === "light"
+                ? "bg-p5-white border-4 border-p5-black hover:rotate-3 shadow-hard"
+                : card.variant === "red"
+                  ? "bg-p5-red border-4 border-p5-black hover:rotate-3 shadow-[8px_8px_0_0_#0F0F0F]"
+                  : card.variant === "dark-red"
+                    ? "bg-p5-black border-4 border-p5-red hover:-rotate-3 shadow-hard"
+                    : "bg-p5-black border-4 border-p5-white hover:-rotate-3 shadow-hard"
+            }`}
+          >
+            <span class={`font-display text-5xl transition-colors block mb-2 ${card.variant === "light" ? "text-p5-black group-hover:text-p5-red" : card.variant === "red" ? "text-p5-white group-hover:text-p5-black" : "text-p5-white group-hover:text-p5-red"}`}>
+              {card.emoji}
+            </span>
+            <span class={`font-display text-3xl transition-colors uppercase leading-none ${card.variant === "light" ? "text-p5-black group-hover:text-p5-red" : card.variant === "red" ? "text-p5-white group-hover:text-p5-black" : "text-p5-white group-hover:text-p5-red"}`}>
+              <span class="lang-es">{card.title.es}</span>
+              <span class="lang-en">{card.title.en}</span>
+            </span>
+            <p class={`font-body text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity h-0 group-hover:h-auto ${card.variant === "light" ? "text-p5-black" : "text-p5-white"}`}>
+              <span class="lang-es">{card.description.es}</span>
+              <span class="lang-en">{card.description.en}</span>
+            </p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <!-- 5. CALLING CARD (CONTACT) -->
     <section class="mt-32 w-full flex flex-col items-center">
-      <div class="mb-12 flex flex-col items-center text-center">
-        <h2 class="font-display text-4xl text-p5-white bg-p5-red px-6 py-2 -skew-x-[6deg] inline-block shadow-sm">
-          <span class="inline-block skew-x-[6deg]">GET IN TOUCH</span>
+      <div class="mb-12 flex flex-col items-center text-center gap-6">
+        <h2 class="font-display text-4xl text-p5-white bg-p5-red px-6 py-2 -skew-x-[6deg] inline-block shadow-[6px_6px_0_0_#0F0F0F] border-4 border-p5-black">
+          <span class="inline-block skew-x-[6deg]">
+            <span class="lang-es">PONTE EN CONTACTO</span>
+            <span class="lang-en">GET IN TOUCH</span>
+          </span>
         </h2>
-        <p class="font-body text-p5-gray mt-4 max-w-lg">
-          ¿Interesado en mi perfil? Déjame tu mensaje y trabajemos juntos en la creación del próximo gran mundo interactivo.
-        </p>
+        <div class="bg-p5-black border-4 border-p5-white -skew-x-[3deg] shadow-hard px-8 py-5 max-w-lg relative">
+          <span class="absolute -top-3 left-4 font-mono text-[10px] bg-p5-red text-p5-white px-2 py-0.5 border-2 border-p5-white uppercase tracking-widest skew-x-[3deg]">
+            <span class="lang-es">&gt; MENSAJE_ENTRANTE:</span>
+            <span class="lang-en">&gt; INCOMING_MSG:</span>
+          </span>
+          <p class="font-body text-p5-white opacity-80 skew-x-[3deg] text-sm leading-relaxed border-l-4 border-p5-red pl-4">
+            <span class="lang-es">Si te interesa mi perfil, conversemos y construyamos juntos el próximo gran mundo interactivo.</span>
+            <span class="lang-en">If my profile sounds interesting to you, let's talk and build the next great interactive world together.</span>
+          </p>
+        </div>
       </div>
-      
-      <CallingCard 
+
+      <CallingCard
         client:load
         name="ALEJANDRO SANDOVAL"
-        email="alejandro.sandoval@example.com"
-        linkedin="https://www.linkedin.com/in/alejandro-sandoval/"
+        email="asandoval123871@gmail.com"
+        linkedin="https://www.linkedin.com/in/alejandro-sandoval-8a9209285/"
         github="https://github.com/tato11901-wq"
         className="w-full max-w-2xl"
       />

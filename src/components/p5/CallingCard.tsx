@@ -44,7 +44,8 @@ export const CallingCard: React.FC<CallingCardProps> = ({
               {name}
             </h3>
             <span className="font-mono text-xs md:text-sm text-p5-red tracking-widest uppercase mt-2 block">
-              // GAME DEVELOPER
+              <span className="lang-es">// DESARROLLADOR DE VIDEOJUEGOS</span>
+              <span className="lang-en">// GAME DEVELOPER</span>
             </span>
           </div>
 
@@ -57,7 +58,14 @@ export const CallingCard: React.FC<CallingCardProps> = ({
                 className={`transition-colors px-2 py-1 inline-block cursor-pointer ${copied ? 'bg-p5-white text-p5-black font-bold' : 'text-p5-white hover:bg-p5-white hover:text-p5-black'}`}
                 title="Click to copy"
               >
-                {copied ? 'COPIED TO CLIPBOARD!' : email}
+                {copied ? (
+                  <>
+                    <span className="lang-es">COPIADO AL PORTAPAPELES</span>
+                    <span className="lang-en">COPIED TO CLIPBOARD!</span>
+                  </>
+                ) : (
+                  email
+                )}
               </a>
             </div>
             <div className="group/item flex flex-col sm:flex-row sm:items-center">
@@ -76,7 +84,8 @@ export const CallingCard: React.FC<CallingCardProps> = ({
 
           <div className="pt-4 border-t-2 border-p5-gray flex justify-between items-end mt-8">
             <div className="font-display text-2xl md:text-3xl text-p5-white opacity-40 italic tracking-widest">
-              CALLING_CARD
+              <span className="lang-es">TARJETA_DE_CONTACTO</span>
+              <span className="lang-en">CALLING_CARD</span>
             </div>
             <div className="w-8 h-8 bg-p5-red rotate-45 transform translate-y-2"></div>
           </div>

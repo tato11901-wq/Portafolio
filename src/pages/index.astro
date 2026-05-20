@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/p5/NavBar.astro";
-import { TechTag } from "../components/p5/TechTag";
 import {
   FeaturedProject,
   type MediaItem,
@@ -12,7 +11,6 @@ import profileImage from "../Assets/Images/Foto de perfil.png";
 
 import "../styles/global.css";
 
-// Mock Data for Projects
 const phantomStrideMedia: MediaItem[] = [
   {
     type: "video",
@@ -36,15 +34,12 @@ const cyberCoreMedia: MediaItem[] = [
 ---
 
 <Layout title="Portafolio - Alejandro Sandoval">
-  <!-- Navigation Bar -->
   <NavBar currentPath="/" />
 
   <div class="space-y-32 pb-40 px-2 md:px-6 w-full max-w-none mx-auto">
-    <!-- SECCIÓN HERO / PERFIL -->
     <section id="sobre-mi" class="space-y-8 relative mt-16">
       <div class="border-4 border-adaptive bg-panel shadow-hard-adaptive skew-x-[3deg]">
         <div class="-skew-x-[3deg] p-8 lg:p-12 xl:p-16 flex flex-col lg:flex-row gap-16 xl:gap-32 items-center justify-between">
-          <!-- Avatar -->
           <div class="flex flex-col items-center gap-6 shrink-0 mx-auto md:mx-0">
             <div class="relative group cursor-pointer w-64 h-64 md:w-80 md:h-80">
               <div class="absolute inset-0 bg-p5-red -skew-x-[6deg] translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-300 border-4 border-p5-black"></div>
@@ -60,12 +55,12 @@ const cyberCoreMedia: MediaItem[] = [
             </div>
             <div class="font-mono text-xs text-[var(--text-color)] opacity-80 bg-panel border-2 border-adaptive px-4 py-2 -skew-x-[6deg] shadow-sm mt-4 text-center">
               <span class="inline-block skew-x-[6deg]">
-                &gt; STATUS: <span class="text-p5-red font-bold tracking-widest animate-pulse">OPEN TO WORK</span>
+                <span class="lang-es">&gt; ESTADO: <span class="text-p5-red font-bold tracking-widest animate-pulse">DISPONIBLE PARA TRABAJAR</span></span>
+                <span class="lang-en">&gt; STATUS: <span class="text-p5-red font-bold tracking-widest animate-pulse">OPEN TO WORK</span></span>
               </span>
             </div>
           </div>
 
-          <!-- Texto Hero -->
           <div class="flex-1 space-y-6">
             <h3 class="font-display text-5xl md:text-7xl uppercase leading-none text-[var(--text-color)] flex flex-wrap items-center gap-3">
               Alejandro
@@ -74,11 +69,15 @@ const cyberCoreMedia: MediaItem[] = [
               </span>
             </h3>
             <p class="font-body text-[var(--text-color)] opacity-90 text-lg border-l-4 border-p5-red pl-4 leading-relaxed">
-              Desarrollador de videojuegos y experiencias interactivas. Especializado en Unity y Game Desing Quiero contar historias através de mecánicas, personajes y aventuras inolvidables.
+              <span class="lang-es">Desarrollador de videojuegos y experiencias interactivas. Especializado en Unity y game design. Quiero contar historias a través de mecánicas, personajes y aventuras inolvidables.</span>
+              <span class="lang-en">Game developer focused on interactive experiences. Specialized in Unity and game design. I want to tell stories through mechanics, characters, and unforgettable adventures.</span>
             </p>
 
             <div class="pt-4">
-              <h4 class="font-display text-2xl mb-4 text-[var(--text-color)] uppercase">Tech Stack</h4>
+              <h4 class="font-display text-2xl mb-4 text-[var(--text-color)] uppercase">
+                <span class="lang-es">Stack Tecnológico</span>
+                <span class="lang-en">Tech Stack</span>
+              </h4>
               <div class="flex flex-wrap gap-3 items-center">
                 <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Unity</span></span>
                 <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">C#</span></span>
@@ -98,99 +97,169 @@ const cyberCoreMedia: MediaItem[] = [
       </div>
     </section>
 
-    <!-- Barras de Confidente -->
     <section class="space-y-8">
       <h3 class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2 inline-block -skew-x-[6deg]">
-        <span class="inline-block skew-x-[6deg]">Confidant Skills</span>
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">Habilidades Confidant</span>
+          <span class="lang-en">Confidant Skills</span>
+        </span>
       </h3>
       <div class="bg-panel border-4 border-adaptive shadow-hard-adaptive skew-x-[3deg]">
         <div class="-skew-x-[3deg] p-8 lg:p-12 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-          <ConfidantBar 
+          <ConfidantBar
             client:load
-            title="UNITY ENGINE" 
-            rank={8} 
-            percentage={80} 
-            description="Experiencia avanzada desarrollando sistemas complejos, shaders en URP/HDRP, y arquitecturas modulares para juegos 2D y 3D." 
+            title="UNITY ENGINE"
+            rank={8}
+            percentage={80}
+            description={{
+              es: "Experiencia avanzada desarrollando sistemas complejos, shaders en URP/HDRP y arquitecturas modulares para juegos 2D y 3D.",
+              en: "Advanced experience building complex systems, URP/HDRP shaders, and modular architectures for 2D and 3D games."
+            }}
           />
-          <ConfidantBar 
+          <ConfidantBar
             client:load
-            title="ASTRO / REACT" 
-            rank={5} 
-            percentage={50} 
-            description="Creación de interfaces web modernas y estáticas, integrando frameworks y componentes reutilizables con un enfoque en el rendimiento." 
+            title="ASTRO / REACT"
+            rank={5}
+            percentage={50}
+            description={{
+              es: "Creación de interfaces web modernas y estáticas, integrando frameworks y componentes reutilizables con un enfoque en el rendimiento.",
+              en: "Creation of modern static web interfaces, integrating frameworks and reusable components with a performance-first mindset."
+            }}
           />
-          <ConfidantBar 
+          <ConfidantBar
             client:load
-            title="C# / PYTHON / JAVA" 
-            rank={7} 
-            percentage={70} 
-            description="Sólidos fundamentos en programación orientada a objetos, scripting, automatización de tareas y desarrollo de backend." 
+            title="C# / PYTHON / JAVA"
+            rank={7}
+            percentage={70}
+            description={{
+              es: "Sólidos fundamentos en programación orientada a objetos, scripting, automatización de tareas y desarrollo backend.",
+              en: "Strong foundations in object-oriented programming, scripting, task automation, and backend development."
+            }}
           />
-          <ConfidantBar 
+          <ConfidantBar
             client:load
-            title="MAYA / MUDBOX" 
-            rank={6} 
-            percentage={60} 
-            description="Modelado 3D, retopología y texturizado para assets integrados en motores de videojuegos." 
+            title="MAYA / MUDBOX"
+            rank={6}
+            percentage={60}
+            description={{
+              es: "Modelado 3D, retopología y texturizado para assets integrados en motores de videojuegos.",
+              en: "3D modeling, retopology, and texturing for assets integrated into game engines."
+            }}
           />
-          <ConfidantBar 
+          <ConfidantBar
             client:load
-            title="UI / UX / FIGMA" 
-            rank={6} 
-            percentage={60} 
-            description="Diseño de wireframes, prototipos interactivos y sistemas de diseño enfocados en la experiencia de usuario final." 
+            title="UI / UX / FIGMA"
+            rank={6}
+            percentage={60}
+            description={{
+              es: "Diseño de wireframes, prototipos interactivos y sistemas de diseño enfocados en la experiencia de usuario final.",
+              en: "Design of wireframes, interactive prototypes, and design systems focused on the end-user experience."
+            }}
+          />
+          <ConfidantBar
+            client:load
+            title={{ es: "PRUEBAS", en: "TESTING" }}
+            rank={8}
+            percentage={80}
+            description={{
+              es: "Prácticas de testing funcional para validar flujos, detectar errores tempranos y mantener una experiencia consistente.",
+              en: "Functional testing practices to validate flows, catch issues early, and keep the experience consistent."
+            }}
           />
         </div>
       </div>
     </section>
 
-    <!-- PROYECTOS DESTACADOS -->
     <section id="proyectos" class="flex flex-col gap-12 mt-16">
       <h2 class="font-display text-5xl md:text-6xl bg-p5-black text-p5-white inline-block px-8 py-3 -skew-x-[6deg] shadow-hard self-start mb-8">
-        <span class="inline-block skew-x-[6deg]">Featured Projects</span>
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">Proyectos Destacados</span>
+          <span class="lang-en">Featured Projects</span>
+        </span>
       </h2>
 
-      <!-- Project 1 -->
       <FeaturedProject
         client:load
-        title="PLANTAGOCHI"
-        context="Game Development"
-        description="Juego sobre cuidar plantas interactivas. Se desarrollaron diversas mecánicas de crecimiento en Unity."
-        tags={["Unity URP", "C# ASYNC"]}
+        title="Sveliaty Combat System"
+        context={{ es: "Desarrollo de Videojuegos", en: "Game Development" }}
+        description={{
+          es: "Sveliaty es un roguelike RPG por turnos donde las decisiones del jugador modifican su apariencia y evolución final.",
+          en: "Sveliaty is a turn-based roguelike RPG where the player's decisions change their final appearance and evolution."
+        }}
+        tags={["Unity", "C#"]}
         media={phantomStrideMedia}
         orientation="left"
-        primaryButton={{ text: "WATCH DEMO", href: "#" }}
-        secondaryButton={{ text: "SOURCE CODE", href: "#" }}
+        primaryButton={{ text: { es: "VER DEMO", en: "WATCH DEMO" }, href: "#" }}
+        secondaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
+        role={{
+          es: "Diseñador de juego y programador principal. Diseñé e implementé la arquitectura del sistema de combate por turnos completo, la lógica matemática de escalado para los atributos de personajes, y el generador modular de renderizado para personajes voxel en Unity.",
+          en: "Game designer and lead programmer. Designed and implemented the architecture of the entire turn-based combat system, attribute scaling mathematical logic, and the modular voxel character rendering generator in Unity."
+        }}
       />
 
-      <!-- Project 2 -->
       <FeaturedProject
         client:load
-        title="SVELIATY"
-        context="Academic Project"
-        description="Proyecto académico de combate RPG. Incluye una fórmula de escalado logístico y generador de personajes voxel modulares."
-        tags={["Blender", "Substance", "C#"]}
+        title="PLANTAGOCHI WEB"
+        context={{ es: "Proyecto Académico", en: "Academic Project" }}
+        description={{
+          es: "Plantagochi Web es uno de los módulos del proyecto Treegemon. Permite cuidar una planta virtual hasta su evolución final dándole agua y sol.",
+          en: "Plantagochi Web is one of the modules in the Treegemon project. It lets users care for a virtual plant until its final evolution by giving it water and sunlight."
+        }}
+        tags={["Astro", "Tailwind", "Html + CSS + JS", "Unity"]}
         media={cyberCoreMedia}
         orientation="right"
-        secondaryButton={{ text: "DOWNLOAD EXE", href: "#" }}
+        primaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
+        secondaryButton={{ text: { es: "PÁGINA EN VIVO", en: "LIVE PAGE" }, href: "#" }}
+        role={{
+          es: "Desarrollador frontend y diseñador técnico. Diseñé e implementé la interfaz interactiva web y la lógica de simulación de cuidado de plantas en tiempo real, integrando estilos dinámicos de alto impacto inspirados en menús de videojuegos modernos.",
+          en: "Frontend developer and technical designer. Designed and implemented the interactive web interface and real-time plant care simulation logic, integrating high-impact dynamic styles inspired by modern game menus."
+        }}
       />
-      
-      <!-- Project 3 -->
+
       <FeaturedProject
         client:load
         title="RESONADOR VR"
-        context="Virtual Reality"
-        description="Simulador de exploración de la sala de un Resonador Magnético. Experiencia inmersiva que educa sobre procedimientos médicos de una forma interactiva."
-        tags={["Unity", "VR", "Oculus"]}
+        context={{ es: "Realidad Virtual", en: "Virtual Reality" }}
+        description={{
+          es: "Simulador de exploración de una sala de resonancia magnética. Una experiencia inmersiva para conocer su funcionamiento y normativa.",
+          en: "An MRI room exploration simulator. An immersive experience designed to teach how the room works and the rules around it."
+        }}
+        tags={["Unity", "VR", "C#"]}
         media={phantomStrideMedia}
         orientation="left"
-        primaryButton={{ text: "DOWNLOAD VR", href: "#" }}
-        secondaryButton={{ text: "SOURCE CODE", href: "#" }}
+        primaryButton={{ text: { es: "DESCARGAR APP", en: "DOWNLOAD APP" }, href: "#" }}
+        secondaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
+        role={{
+          es: "Desarrollador XR y de simulación física. Encargado del diseño e implementación de las mecánicas de interacción con mandos VR en Unity, el sistema de colisiones por fuerzas electromagnéticas, y guías de usuario estructuradas basadas en normativas médicas reales.",
+          en: "XR & physical simulation developer. Responsible for designing and implementing VR controller interaction mechanics in Unity, electromagnetic force-based collision systems, and structured user guides modeled after real medical regulations."
+        }}
+      />
+
+      <FeaturedProject
+        client:load
+        title="CYBER CORE 3D"
+        context={{ es: "Modelado 3D & Asset", en: "3D Modeling & Asset" }}
+        description={{
+          es: "Modelo de núcleo cibernético estilo Sci-Fi de alta fidelidad, optimizado para motores de juego en tiempo real con texturas PBR detalladas.",
+          en: "High-fidelity Sci-Fi cybernetic core model, optimized for real-time game engines with detailed PBR textures."
+        }}
+        tags={["Blender", "Substance Painter", "PBR Texturing"]}
+        media={cyberCoreMedia}
+        orientation="right"
+        primaryButton={{ text: { es: "VER EN ARTSTATION", en: "VIEW ON ARTSTATION" }, href: "#" }}
+        secondaryButton={{ text: { es: "CÓDIGO DE SHADERS", en: "SHADER CODE" }, href: "#" }}
+        role={{
+          es: "Artista 3D y Programador de Shaders. Creé la malla geométrica optimizada en Blender, realicé el bake de mapas y texturizado en Substance Painter, e implementé el shader holográfico dinámico en Unity.",
+          en: "3D Artist and Shader Programmer. Created the optimized geometry in Blender, baked and textured the maps in Substance Painter, and implemented the dynamic holographic shader in Unity."
+        }}
       />
 
       <div class="flex justify-center mt-12">
         <a href="/proyectos" class="font-display text-4xl bg-p5-red text-p5-white px-12 py-6 -skew-x-[6deg] shadow-[8px_8px_0_0_#0F0F0F] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#0F0F0F] transition-all flex items-center gap-4 group">
-          <span class="inline-block skew-x-[6deg]">VIEW ALL PROJECTS</span>
+          <span class="inline-block skew-x-[6deg]">
+            <span class="lang-es">VER TODOS LOS PROYECTOS</span>
+            <span class="lang-en">VIEW ALL PROJECTS</span>
+          </span>
           <svg class="w-8 h-8 skew-x-[6deg] group-hover:translate-x-2 transition-transform" fill="currentColor" viewBox="0 0 20 20"><path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
         </a>
       </div>
