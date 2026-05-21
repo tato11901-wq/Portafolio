@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# Alejandro Sandoval - Interactive Portfolio
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Welcome to my personal portfolio repository! This project serves as an interactive showcase of my work as a **Game Developer, Gameplay Programmer, and Digital Artist (UI/UX & 3D)**. The design is heavily inspired by the dynamic, high-contrast aesthetics of the *Persona 5* video game UI.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Features
 
-## 🚀 Project Structure
+- **Bilingual Support**: Fully localized in English and Spanish.
+- **Dynamic Aesthetic**: High contrast, skewed elements, and hard shadows inspired by *Persona 5*.
+- **Interactive Project Filtering**: Switch seamlessly between Game Development projects and Digital Art / 3D Modeling.
+- **Responsive Design**: Carefully crafted to look great on desktop and mobile devices.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tech Stack
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+This project was built with modern web technologies:
+- **[Astro](https://astro.build/)**: For incredibly fast static site generation and component islands.
+- **[React](https://reactjs.org/)**: Used for interactive components (like the Project Views and Calling Card).
+- **[Tailwind CSS](https://tailwindcss.com/)**: For utility-first, highly customizable styling directly in the markup.
+- **[TypeScript](https://www.typescriptlang.org/)**: For robust, type-safe code.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting Started Locally
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+If you want to run this project locally to see the code in action, follow these steps:
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tato11901-wq/Portafolio.git
+   ```
 
-## 🧞 Commands
+2. **Navigate to the directory:**
+   ```bash
+   cd Portafolio
+   ```
 
-All commands are run from the root of the project, from a terminal:
+3. **Install dependencies:**
+   This project uses `pnpm` as the package manager.
+   ```bash
+   pnpm install
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+4. **Start the development server:**
+   ```bash
+   pnpm dev
+   ```
+   The site will be available at `http://localhost:4321`.
 
-## 👀 Want to learn more?
+## Project Structure
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `src/pages/`: Contains the Astro routes (`index.astro`, `sobre-mi.astro`, `proyectos.astro`).
+- `src/components/p5/`: Contains all the custom UI components with the Persona 5 aesthetic (both Astro and React components).
+- `src/layouts/`: Global layouts wrapping the pages.
+- `public/Assets/`: Static assets such as images, videos, and PDFs.
+
+## Contact & Links
+
+- **LinkedIn**: [Alejandro Sandoval](https://www.linkedin.com/in/alejandro-sandoval-8a9209285/)
+- **GitHub**: [tato11901-wq](https://github.com/tato11901-wq)
+- **Sketchfab**: [ImJustSandie](https://sketchfab.com/ImJustSandie)
+- **ORCID**: [0009-0004-1351-8391](https://orcid.org/0009-0004-1351-8391)
+
+---
+*Created by Alejandro Sandoval.*
