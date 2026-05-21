@@ -9,6 +9,7 @@ interface P5ButtonProps {
   href?: string;
   className?: string;
   icon?: React.ReactNode;
+  download?: boolean | string;
 }
 
 export const P5Button: React.FC<P5ButtonProps> = ({ 
@@ -17,7 +18,8 @@ export const P5Button: React.FC<P5ButtonProps> = ({
   onClick, 
   href, 
   className = '',
-  icon 
+  icon,
+  download
 }) => {
   const baseStyles = "font-display text-xl py-3 px-6 transition-all cursor-pointer flex items-center justify-center gap-2 group/btn relative overflow-hidden";
   
@@ -36,6 +38,7 @@ export const P5Button: React.FC<P5ButtonProps> = ({
       href={href}
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${className}`}
+      download={download as any}
     >
       {/* Box icon for source code style if primary/secondary */}
       {variant === 'secondary' && <span className="w-4 h-4 bg-p5-white group-hover/btn:bg-p5-black transition-colors"></span>}

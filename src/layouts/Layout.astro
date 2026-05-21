@@ -1,21 +1,62 @@
 ---
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = "Portafolio profesional de Alejandro Sandoval, Ingeniero Multimedia especializado en desarrollo de videojuegos en Unity, C#, diseño de interfaces UI/UX y desarrollo frontend.",
+	image = "/Assets/og-image.png"
+} = Astro.props;
+
 import "../styles/global.css";
+
+const schemaJSON = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alejandro Sandoval",
+  "jobTitle": "Multimedia Engineer & Game Developer",
+  "url": "https://alejandrosandoval.dev", // Cambiar por dominio final si aplica
+  "sameAs": [
+    "https://github.com/tato11901-wq",
+    "https://www.linkedin.com/in/alejandro-sandoval-8a9209285/"
+  ],
+  "knowsAbout": ["Game Development", "Unity", "C#", "UI/UX Design", "Web Development", "Astro", "3D Modeling"]
+});
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Portafolio Interactivo" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Básico -->
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Alejandro Sandoval" />
+		<meta name="keywords" content="Alejandro Sandoval, Game Developer, Desarrollador de videojuegos, Unity, C#, Ingeniero Multimedia, Portafolio Game Dev, UI/UX Designer, Astro" />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Open Graph / Facebook / LinkedIn -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+
+		<!-- Datos Estructurados para Google -->
+		<script type="application/ld+json" set:html={schemaJSON}></script>
+
 		<script is:inline>
 			const savedLang = localStorage.getItem('p5-portfolio-lang');
 			if (savedLang) {
@@ -29,3 +70,4 @@ import "../styles/global.css";
 		</main>
 	</body>
 </html>
+

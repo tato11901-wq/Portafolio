@@ -3,15 +3,15 @@ import { ProjectCard } from './ProjectCard';
 
 interface ProjectViewsProps {
   devProjects: any[]; // We will pass the mock data for dev projects
-  modelProjects: any[]; // We will pass the mock data for 3d projects
+  artProjects: any[]; // We will pass the mock data for digital art projects
 }
 
-export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, modelProjects }) => {
-  const [activeView, setActiveView] = useState<'dev' | '3d'>('dev');
+export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, artProjects }) => {
+  const [activeView, setActiveView] = useState<'dev' | 'art'>('dev');
 
   useEffect(() => {
     // Modify body background and colors based on view
-    if (activeView === '3d') {
+    if (activeView === 'art') {
       document.body.style.backgroundColor = '#660000'; // Dark Red background
       document.body.style.color = '#F4F4F4';
       document.body.style.backgroundImage = 'radial-gradient(rgba(15, 15, 15, 0.4) 2px, transparent 2px)';
@@ -29,7 +29,7 @@ export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, modelPr
     };
   }, [activeView]);
 
-  const currentProjects = activeView === 'dev' ? devProjects : modelProjects;
+  const currentProjects = activeView === 'dev' ? devProjects : artProjects;
 
   return (
     <div className="w-full">
@@ -48,14 +48,14 @@ export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, modelPr
           </button>
           
           <button
-            onClick={() => setActiveView('3d')}
+            onClick={() => setActiveView('art')}
             className={`px-8 py-3 font-display text-2xl uppercase tracking-widest transition-all ${
-              activeView === '3d' 
+              activeView === 'art' 
                 ? 'bg-p5-white text-p5-black shadow-[4px_4px_0_0_#0F0F0F]' 
                 : 'text-p5-white hover:bg-p5-black/20'
             }`}
           >
-            <span className="inline-block skew-x-[6deg]">3D / Modeling</span>
+            <span className="inline-block skew-x-[6deg]">Digital Art</span>
           </button>
         </div>
       </div>
@@ -72,7 +72,7 @@ export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, modelPr
             variant={idx % 2 === 0 ? 'red' : 'white'}
             primaryButton={proj.primaryButton}
             secondaryButton={proj.secondaryButton}
-            className={activeView === '3d' ? 'theme-red-context' : ''}
+            className={activeView === 'art' ? 'theme-red-context' : ''}
           />
         ))}
       </div>

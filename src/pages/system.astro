@@ -18,12 +18,12 @@ import "../styles/global.css";
 const phantomStrideMedia: MediaItem[] = [
   {
     type: "video",
-    url: "/src/Assets/Proyectos/Referencia/2026-04-24 09-56-40.mkv",
+    url: "/Assets/Proyectos/Referencia/2026-04-24 09-56-40.mkv",
     filename: "DEMO_VIDEO.MKV",
   },
   {
     type: "image",
-    url: "/src/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194130.png",
+    url: "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194130.png",
     filename: "SCREENSHOT_01.PNG",
   },
 ];
@@ -31,7 +31,7 @@ const phantomStrideMedia: MediaItem[] = [
 const cyberCoreMedia: MediaItem[] = [
   {
     type: "image",
-    url: "/src/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
+    url: "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
     filename: "MODEL_RENDER_01.PNG",
   },
 ];
@@ -973,24 +973,30 @@ const cyberCoreMedia: MediaItem[] = [
       <FeaturedProject
         client:load
         title="PLANTAGOCHI"
-        context="Project_Context"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        context={{ es: "Contexto del Proyecto", en: "Project Context" }}
+        description={{
+          es: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }}
         tags={["Unity URP", "C# ASYNC"]}
         media={phantomStrideMedia}
         orientation="left"
-        primaryButton={{ text: "WATCH DEMO", href: "#" }}
-        secondaryButton={{ text: "SOURCE CODE", href: "#" }}
+        primaryButton={{ text: { es: "VER DEMO", en: "WATCH DEMO" }, href: "#" }}
+        secondaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
       />
 
       <FeaturedProject
         client:load
         title="SVELIATY"
-        context="Project_Context"
-        description="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        context={{ es: "Contexto del Proyecto", en: "Project Context" }}
+        description={{
+          es: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          en: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }}
         tags={["Blender", "Substance"]}
         media={cyberCoreMedia}
         orientation="right"
-        secondaryButton={{ text: "DOWNLOAD EXE", href: "#" }}
+        secondaryButton={{ text: { es: "DESCARGAR EXE", en: "DOWNLOAD EXE" }, href: "#" }}
       />
     </section>
   </div>

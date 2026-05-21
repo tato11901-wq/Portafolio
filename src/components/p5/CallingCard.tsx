@@ -5,6 +5,8 @@ interface CallingCardProps {
   email: string;
   linkedin: string;
   github: string;
+  orcid?: string;
+  sketchfab?: string;
   className?: string;
 }
 
@@ -13,6 +15,8 @@ export const CallingCard: React.FC<CallingCardProps> = ({
   email,
   linkedin,
   github,
+  orcid,
+  sketchfab,
   className = ''
 }) => {
   const [copied, setCopied] = useState(false);
@@ -80,6 +84,22 @@ export const CallingCard: React.FC<CallingCardProps> = ({
                 /tato11901-wq
               </a>
             </div>
+            {orcid && (
+              <div className="group/item flex flex-col sm:flex-row sm:items-center">
+                <span className="text-p5-red w-28">ORCID:</span>
+                <a href={`https://orcid.org/${orcid}`} target="_blank" rel="noopener noreferrer" className="text-p5-white hover:bg-p5-white hover:text-p5-black transition-colors px-2 py-1 inline-block text-xs sm:text-sm">
+                  {orcid}
+                </a>
+              </div>
+            )}
+            {sketchfab && (
+              <div className="group/item flex flex-col sm:flex-row sm:items-center">
+                <span className="text-p5-red w-28">SKETCHFAB:</span>
+                <a href={sketchfab} target="_blank" rel="noopener noreferrer" className="text-p5-white hover:bg-p5-white hover:text-p5-black transition-colors px-2 py-1 inline-block">
+                  /ImJustSandie
+                </a>
+              </div>
+            )}
           </div>
 
           <div className="pt-4 border-t-2 border-p5-gray flex justify-between items-end mt-8">
