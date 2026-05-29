@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import { TechIcon } from './TechIcons';
 
 type LocalizedText = {
   es: string;
   en: string;
 };
 
+export interface TagInfo {
+  name: string;
+  icon: string;
+}
+
 export interface ConfidantBarProps {
   title: string | LocalizedText;
   rank: number;
   percentage: number;
   description: LocalizedText;
+  tags?: TagInfo[];
 }
 
-export const ConfidantBar: React.FC<ConfidantBarProps> = ({ title, rank, percentage, description }) => {
+export const ConfidantBar: React.FC<ConfidantBarProps> = ({ title, rank, percentage, description, tags }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const localizedTitle = typeof title === 'string' ? { es: title, en: title } : title;
 
@@ -38,6 +45,24 @@ export const ConfidantBar: React.FC<ConfidantBarProps> = ({ title, rank, percent
           style={{ backgroundImage: 'radial-gradient(black 1px, transparent 1px)', backgroundSize: '4px 4px' }}
         ></div>
       </div>
+
+      {tags && tags.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-2">
+          {tags.map((tag) => (
+            <span
+              key={tag.icon}
+              className="inline-flex items-center gap-1.5 bg-p5-black text-p5-white font-mono text-[10px] tracking-wider px-2 py-1 border border-p5-white/30 -skew-x-[6deg] hover:bg-p5-red hover:border-p5-red transition-colors group/tag"
+            >
+              <span className="inline-flex skew-x-[6deg] items-center gap-1.5">
+                <span className="w-3.5 h-3.5 flex items-center justify-center text-p5-white/80 group-hover/tag:text-p5-white transition-colors">
+                  <TechIcon name={tag.icon} className="w-full h-full" />
+                </span>
+                {tag.name}
+              </span>
+            </span>
+          ))}
+        </div>
+      )}
 
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out px-1 pb-2 ${

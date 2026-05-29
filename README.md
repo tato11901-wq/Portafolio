@@ -23,7 +23,7 @@ If you want to run this project locally to see the code in action, follow these 
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/tato11901-wq/Portafolio.git
+   git clone https://github.com/ImJustSandie/Portafolio.git
    ```
 
 2. **Navigate to the directory:**
@@ -53,7 +53,7 @@ If you want to run this project locally to see the code in action, follow these 
 ## Contact & Links
 
 - **LinkedIn**: [Alejandro Sandoval](https://www.linkedin.com/in/alejandro-sandoval-8a9209285/)
-- **GitHub**: [tato11901-wq](https://github.com/tato11901-wq)
+- **GitHub**: [ImJustSandie](https://github.com/ImJustSandie)
 - **Sketchfab**: [ImJustSandie](https://sketchfab.com/ImJustSandie)
 - **ORCID**: [0009-0004-1351-8391](https://orcid.org/0009-0004-1351-8391)
 

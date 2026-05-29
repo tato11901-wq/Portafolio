@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Camilo Sandoval",
+    "role": {
+      "es": "Compañero de carrera · Ingeniería Multimedia",
+      "en": "Classmate · Multimedia Engineering"
+    },
+    "text": {
+      "es": "Alejandro es un profesional apasionado por la tecnologia y el desarrollo de software. Con experiencia en diversas areas de la programacion, ha logrado crear proyectos innovadores y de calidad. Su capacidad para liderar equipos y resolver problemas complejos lo convierte en un activo valioso para cualquier proyecto.",
+      "en": "Alejandro is a passionate professional dedicated to technology and software development. With experience across multiple programming areas, he has created innovative, high-quality projects. His ability to lead teams and solve complex problems makes him a valuable asset to any project."
+    },
+    "image": "",
+    "linkedin": "https://www.linkedin.com/in/alejandro-sandoval-8a9209285/"
+  },
+  {
+    "name": "Valentina Martínez",
+    "role": {
+      "es": "Compañera de Semillero · JOBS Research Lab",
+      "en": "Research Partner · JOBS Research Lab"
+    },
+    "text": {
+      "es": "Trabajar con Alejandro en el semillero de investigación fue una experiencia enriquecedora. Su enfoque metódico y su creatividad para resolver problemas técnicos son admirables. Siempre está dispuesto a compartir sus conocimientos y a colaborar con los demás.",
+      "en": "Working with Alejandro at the research lab was an enriching experience. His methodical approach and creativity in solving technical problems are admirable. He is always willing to share his knowledge and collaborate with others."
+    },
+    "image": "",
+    "linkedin": "https://www.linkedin.com/"
+  },
+  {
+    "name": "Andrés Felipe Rojas",
+    "role": {
+      "es": "Líder de proyecto · Unity Developer",
+      "en": "Project Lead · Unity Developer"
+    },
+    "text": {
+      "es": "Conocí a Alejandro durante el desarrollo de Sveliaty y desde el inicio demostró un nivel de compromiso y calidad técnica impresionantes. Su capacidad para diseñar arquitecturas modulares y su atención al detalle hacen que sea un placer trabajar con él. Sin duda, un desarrollador con un futuro brillante.",
+      "en": "I met Alejandro during the development of Sveliaty and from the start he showed an impressive level of commitment and technical quality. His ability to design modular architectures and his attention to detail make him a pleasure to work with. Without a doubt, a developer with a bright future."
+    },
+    "image": "",
+    "linkedin": "https://www.linkedin.com/"
+  }
+]

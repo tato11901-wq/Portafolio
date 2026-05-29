@@ -1,21 +1,50 @@
 import React from 'react';
+import { TechIcon } from './TechIcons';
 
 const ROTATIONS = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2', '-rotate-2', 'rotate-1'];
 const SKEWS = ['-skew-x-[6deg]', 'skew-x-[6deg]', '-skew-x-[6deg]', 'skew-x-[6deg]', '-skew-x-[6deg]', 'skew-x-[6deg]'];
 const INNER_SKEWS = ['skew-x-[6deg]', '-skew-x-[6deg]', 'skew-x-[6deg]', '-skew-x-[6deg]', 'skew-x-[6deg]', '-skew-x-[6deg]'];
+
+const TAG_ICON_MAP: Record<string, string> = {
+  Unity: "Unity",
+  "C#": "C#",
+  Python: "Python",
+  Java: "Java",
+  React: "React",
+  Astro: "Astro",
+  Blender: "Blender",
+  Figma: "Figma",
+  Git: "Git",
+  GitHub: "GitHub",
+  HTML: "HTML5",
+  CSS: "CSS3",
+  JS: "JavaScript",
+  "Tailwind CSS": "Tailwind CSS",
+  Tailwind: "Tailwind CSS",
+  TypeScript: "TypeScript",
+  "Node.js": "Node.js",
+  Vite: "Vite",
+  Maya: "Maya",
+  "Substance Painter": "Substance",
+  Substance: "Substance",
+  ZBrush: "ZBrush",
+  Photoshop: "Photoshop",
+};
 
 interface TechTagProps {
   name: string;
   variant?: 'black' | 'white';
   index?: number;
   className?: string;
+  icon?: string;
 }
 
-export const TechTag: React.FC<TechTagProps> = ({ name, variant = 'black', index = 0, className = '' }) => {
+export const TechTag: React.FC<TechTagProps> = ({ name, variant = 'black', index = 0, className = '', icon }) => {
   const isWhite = variant === 'white';
   const rotation = ROTATIONS[index % ROTATIONS.length];
   const skew = SKEWS[index % SKEWS.length];
   const innerSkew = INNER_SKEWS[index % INNER_SKEWS.length];
+  const resolvedIcon = icon || TAG_ICON_MAP[name];
 
   return (
     <span className={`
@@ -24,10 +53,15 @@ export const TechTag: React.FC<TechTagProps> = ({ name, variant = 'black', index
       ${skew} ${rotation}
       hover:rotate-0 hover:bg-p5-red hover:text-p5-white hover:border-p5-black
       transition-all duration-200 cursor-default
-      border-2 inline-block group
+      border-2 inline-flex items-center gap-1.5 group
       ${className}
     `}>
-      <span className={`inline-block ${innerSkew} uppercase tracking-wider`}>
+      <span className={`inline-flex items-center gap-1.5 ${innerSkew} uppercase tracking-wider`}>
+        {resolvedIcon && (
+          <span className={`w-3.5 h-3.5 flex items-center justify-center flex-shrink-0 ${isWhite ? 'text-p5-black/80' : 'text-p5-white/80'} group-hover:text-p5-white transition-colors`}>
+            <TechIcon name={resolvedIcon} className="w-full h-full" />
+          </span>
+        )}
         {name}
       </span>
     </span>

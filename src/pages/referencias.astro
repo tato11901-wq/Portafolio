@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../components/p5/NavBar.astro";
+import { TestimonialCard } from "../components/p5/TestimonialCard";
+import type { TestimonialData } from "../components/p5/TestimonialCard";
+import testimonials from "../data/referencias.json";
+---
+
+<Layout title="Referencias - Alejandro Sandoval">
+  <NavBar currentPath="/referencias" />
+
+  <div class="space-y-32 pb-40 px-4 md:px-8 w-full max-w-7xl mx-auto flex flex-col overflow-visible">
+    <div class="flex justify-center mt-8">
+      <h1
+        class="font-display text-5xl md:text-7xl bg-p5-red text-p5-white inline-block px-12 py-6 -skew-x-[6deg] shadow-[12px_12px_0_0_#0F0F0F] mb-8 border-4 border-p5-black"
+      >
+        <span class="inline-block skew-x-[6deg]">
+          <span class="lang-es">ARCHIVO DE REFERENCIAS</span>
+          <span class="lang-en">REFERENCE ARCHIVE</span>
+        </span>
+      </h1>
+    </div>
+
+    <section class="relative">
+      <div
+        class="bg-p5-white border-4 border-p5-black p-8 md:p-12 shadow-hard pt-16 relative"
+      >
+        <div
+          class="absolute -top-6 -left-4 bg-p5-black text-p5-white px-6 py-2 font-display text-3xl -skew-x-[6deg] z-10 border-2 border-p5-white shadow-[4px_4px_0_0_#E50012]"
+        >
+          <span class="inline-block skew-x-[6deg]">
+            <span class="lang-es">COMENTARIOS Y RECOMENDACIONES</span>
+            <span class="lang-en">TESTIMONIALS & RECOMMENDATIONS</span>
+          </span>
+        </div>
+
+        <p
+          class="font-body text-lg md:text-xl text-p5-black leading-relaxed border-l-8 border-p5-red pl-6 mb-10"
+        >
+          <span class="lang-es"
+            >Las opiniones y comentarios de personas que han trabajado conmigo o me conocen profesionalmente. Cada referencia representa una experiencia real de colaboración.</span
+          >
+          <span class="lang-en"
+            >Feedback and comments from people who have worked with me or know me professionally. Each reference represents a real collaboration experience.</span
+          >
+        </p>
+
+        <div class="grid grid-cols-1 gap-12 relative z-10">
+          {
+            testimonials.map((t) => (
+              <TestimonialCard
+                client:load
+                name={t.name}
+                text={t.text}
+                linkedin={t.linkedin}
+                role={t.role}
+                image={t.image}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

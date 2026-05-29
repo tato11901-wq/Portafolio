@@ -1,36 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NavBar from "../components/p5/NavBar.astro";
-import {
-  FeaturedProject,
-  type MediaItem,
-} from "../components/p5/FeaturedProject";
+import { FeaturedProject } from "../components/p5/FeaturedProject";
+import type { ProjectData } from "../types";
 import { ConfidantBar } from "../components/p5/ConfidantBar";
+import type { ConfidantBarProps } from "../components/p5/ConfidantBar";
+import { TechTag } from "../components/p5/TechTag";
 import { Image } from "astro:assets";
 import profileImage from "../Assets/Images/Foto de perfil.png";
+import proyectos from "../data/proyectos.json";
+import confidantSkills from "../data/confidant-skills.json";
 
 import "../styles/global.css";
 
-const phantomStrideMedia: MediaItem[] = [
-  {
-    type: "video",
-    url: "/Assets/Proyectos/Referencia/2026-04-24 09-56-40.mkv",
-    filename: "DEMO_VIDEO.MKV",
-  },
-  {
-    type: "image",
-    url: "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194130.png",
-    filename: "SCREENSHOT_01.PNG",
-  },
-];
-
-const cyberCoreMedia: MediaItem[] = [
-  {
-    type: "image",
-    url: "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
-    filename: "MODEL_RENDER_01.PNG",
-  },
-];
+const featuredProjects = (proyectos as ProjectData[]).filter((p) => p.featured);
 ---
 
 <Layout title="Portafolio - Alejandro Sandoval">
@@ -73,23 +56,45 @@ const cyberCoreMedia: MediaItem[] = [
               <span class="lang-en">Game developer focused on interactive experiences. Specialized in Unity and game design. I want to tell stories through mechanics, characters, and unforgettable adventures.</span>
             </p>
 
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a href="https://github.com/ImJustSandie" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm px-4 py-2 bg-p5-black text-p5-white border-2 border-p5-white shadow-[4px_4px_0_0_#E50012] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all -skew-x-[6deg] group">
+                <span class="inline-flex skew-x-[6deg] items-center gap-2">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  GitHub
+                </span>
+              </a>
+              <a href="https://sketchfab.com/ImJustSandie" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm px-4 py-2 bg-p5-black text-p5-white border-2 border-p5-white shadow-[4px_4px_0_0_#E50012] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all skew-x-[6deg] group">
+                <span class="inline-flex -skew-x-[6deg] items-center gap-2">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.857 17.143a.857.857 0 01-.857.857H6a.857.857 0 01-.857-.857V6.857A.857.857 0 016 6h12a.857.857 0 01.857.857v10.286zM15.714 8.4c-1.143 0-2.057.914-2.057 2.057 0 .857.514 1.628 1.286 1.971v3.772c0 .343-.257.6-.6.6h-1.029v-1.886A1.6 1.6 0 0013.2 14.4c-1.143 0-2.057-.914-2.057-2.057s.914-2.057 2.057-2.057c.857 0 1.628.514 1.971 1.286h1.886V8.4zM8.4 10.286a1.886 1.886 0 011.886-1.886H12v3.086a1.886 1.886 0 01-1.886-1.2z"/></svg>
+                  Sketchfab
+                </span>
+              </a>
+              <a href="https://www.linkedin.com/in/alejandro-sandoval-8a9209285/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-sm px-4 py-2 bg-p5-black text-p5-white border-2 border-p5-white shadow-[4px_4px_0_0_#E50012] hover:shadow-none hover:translate-x-0.5 hover:translate-y-0.5 transition-all -skew-x-[6deg] group">
+                <span class="inline-flex skew-x-[6deg] items-center gap-2">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </span>
+              </a>
+            </div>
+
             <div class="pt-4">
               <h4 class="font-display text-2xl mb-4 text-[var(--text-color)] uppercase">
                 <span class="lang-es">Stack Tecnológico</span>
                 <span class="lang-en">Tech Stack</span>
               </h4>
               <div class="flex flex-wrap gap-3 items-center">
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Unity</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">C#</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Python</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">Java</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">JS / HTML5 / CSS</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">React</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Astro</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">Blender</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Figma</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 skew-x-[6deg] rotate-1 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block -skew-x-[6deg]">Substance</span></span>
-                <span class="bg-p5-black text-p5-white font-mono text-sm px-3 py-1 -skew-x-[6deg] -rotate-2 hover:rotate-0 hover:bg-p5-red transition-all cursor-default border-2 border-p5-white group"><span class="inline-block skew-x-[6deg]">Git / GitHub</span></span>
+                <TechTag name="Unity" />
+                <TechTag name="C#" />
+                <TechTag name="Python" />
+                <TechTag name="Java" />
+                <TechTag name="React" />
+                <TechTag name="Astro" />
+                <TechTag name="Blender" />
+                <TechTag name="Figma" />
+                <TechTag name="TypeScript" />
+                <TechTag name="Node.js" />
+                <TechTag name="Git" />
+                <TechTag name="GitHub" />
               </div>
             </div>
           </div>
@@ -106,66 +111,18 @@ const cyberCoreMedia: MediaItem[] = [
       </h3>
       <div class="bg-panel border-4 border-adaptive shadow-hard-adaptive skew-x-[3deg]">
         <div class="-skew-x-[3deg] p-8 lg:p-12 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
-          <ConfidantBar
-            client:load
-            title="UNITY ENGINE"
-            rank={8}
-            percentage={80}
-            description={{
-              es: "Experiencia avanzada desarrollando sistemas complejos, shaders en URP/HDRP y arquitecturas modulares para juegos 2D y 3D.",
-              en: "Advanced experience building complex systems, URP/HDRP shaders, and modular architectures for 2D and 3D games."
-            }}
-          />
-          <ConfidantBar
-            client:load
-            title="ASTRO / REACT"
-            rank={5}
-            percentage={50}
-            description={{
-              es: "Creación de interfaces web modernas y estáticas, integrando frameworks y componentes reutilizables con un enfoque en el rendimiento.",
-              en: "Creation of modern static web interfaces, integrating frameworks and reusable components with a performance-first mindset."
-            }}
-          />
-          <ConfidantBar
-            client:load
-            title="C# / PYTHON / JAVA"
-            rank={7}
-            percentage={70}
-            description={{
-              es: "Sólidos fundamentos en programación orientada a objetos, scripting, automatización de tareas y desarrollo backend.",
-              en: "Strong foundations in object-oriented programming, scripting, task automation, and backend development."
-            }}
-          />
-          <ConfidantBar
-            client:load
-            title="MAYA / MUDBOX"
-            rank={6}
-            percentage={60}
-            description={{
-              es: "Modelado 3D, retopología y texturizado para assets integrados en motores de videojuegos.",
-              en: "3D modeling, retopology, and texturing for assets integrated into game engines."
-            }}
-          />
-          <ConfidantBar
-            client:load
-            title="UI / UX / FIGMA"
-            rank={6}
-            percentage={60}
-            description={{
-              es: "Diseño de wireframes, prototipos interactivos y sistemas de diseño enfocados en la experiencia de usuario final.",
-              en: "Design of wireframes, interactive prototypes, and design systems focused on the end-user experience."
-            }}
-          />
-          <ConfidantBar
-            client:load
-            title={{ es: "PRUEBAS", en: "TESTING" }}
-            rank={8}
-            percentage={80}
-            description={{
-              es: "Prácticas de testing funcional para validar flujos, detectar errores tempranos y mantener una experiencia consistente.",
-              en: "Functional testing practices to validate flows, catch issues early, and keep the experience consistent."
-            }}
-          />
+          {
+            (confidantSkills as ConfidantBarProps[]).map((skill) => (
+              <ConfidantBar
+                client:load
+                title={skill.title}
+                rank={skill.rank}
+                percentage={skill.percentage}
+                description={skill.description}
+                tags={skill.tags}
+              />
+            ))
+          }
         </div>
       </div>
     </section>
@@ -178,81 +135,22 @@ const cyberCoreMedia: MediaItem[] = [
         </span>
       </h2>
 
-      <FeaturedProject
-        client:load
-        title="Sveliaty Combat System"
-        context={{ es: "Desarrollo de Videojuegos", en: "Game Development" }}
-        description={{
-          es: "Sveliaty es un roguelike RPG por turnos donde las decisiones del jugador modifican su apariencia y evolución final.",
-          en: "Sveliaty is a turn-based roguelike RPG where the player's decisions change their final appearance and evolution."
-        }}
-        tags={["Unity", "C#"]}
-        media={phantomStrideMedia}
-        orientation="left"
-        primaryButton={{ text: { es: "VER DEMO", en: "WATCH DEMO" }, href: "#" }}
-        secondaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
-        role={{
-          es: "Diseñador de juego y programador principal. Diseñé e implementé la arquitectura del sistema de combate por turnos completo, la lógica matemática de escalado para los atributos de personajes, y el generador modular de renderizado para personajes voxel en Unity.",
-          en: "Game designer and lead programmer. Designed and implemented the architecture of the entire turn-based combat system, attribute scaling mathematical logic, and the modular voxel character rendering generator in Unity."
-        }}
-      />
-
-      <FeaturedProject
-        client:load
-        title="PLANTAGOCHI WEB"
-        context={{ es: "Proyecto Académico", en: "Academic Project" }}
-        description={{
-          es: "Plantagochi Web es uno de los módulos del proyecto Treegemon. Permite cuidar una planta virtual hasta su evolución final dándole agua y sol.",
-          en: "Plantagochi Web is one of the modules in the Treegemon project. It lets users care for a virtual plant until its final evolution by giving it water and sunlight."
-        }}
-        tags={["Astro", "Tailwind", "Html + CSS + JS", "Unity"]}
-        media={cyberCoreMedia}
-        orientation="right"
-        primaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
-        secondaryButton={{ text: { es: "PÁGINA EN VIVO", en: "LIVE PAGE" }, href: "#" }}
-        role={{
-          es: "Desarrollador frontend y diseñador técnico. Diseñé e implementé la interfaz interactiva web y la lógica de simulación de cuidado de plantas en tiempo real, integrando estilos dinámicos de alto impacto inspirados en menús de videojuegos modernos.",
-          en: "Frontend developer and technical designer. Designed and implemented the interactive web interface and real-time plant care simulation logic, integrating high-impact dynamic styles inspired by modern game menus."
-        }}
-      />
-
-      <FeaturedProject
-        client:load
-        title="RESONADOR VR"
-        context={{ es: "Realidad Virtual", en: "Virtual Reality" }}
-        description={{
-          es: "Simulador de exploración de una sala de resonancia magnética. Una experiencia inmersiva para conocer su funcionamiento y normativa.",
-          en: "An MRI room exploration simulator. An immersive experience designed to teach how the room works and the rules around it."
-        }}
-        tags={["Unity", "VR", "C#"]}
-        media={phantomStrideMedia}
-        orientation="left"
-        primaryButton={{ text: { es: "DESCARGAR APP", en: "DOWNLOAD APP" }, href: "#" }}
-        secondaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
-        role={{
-          es: "Desarrollador XR y de simulación física. Encargado del diseño e implementación de las mecánicas de interacción con mandos VR en Unity, el sistema de colisiones por fuerzas electromagnéticas, y guías de usuario estructuradas basadas en normativas médicas reales.",
-          en: "XR & physical simulation developer. Responsible for designing and implementing VR controller interaction mechanics in Unity, electromagnetic force-based collision systems, and structured user guides modeled after real medical regulations."
-        }}
-      />
-
-      <FeaturedProject
-        client:load
-        title="CYBER CORE 3D"
-        context={{ es: "Modelado 3D & Asset", en: "3D Modeling & Asset" }}
-        description={{
-          es: "Modelo de núcleo cibernético estilo Sci-Fi de alta fidelidad, optimizado para motores de juego en tiempo real con texturas PBR detalladas.",
-          en: "High-fidelity Sci-Fi cybernetic core model, optimized for real-time game engines with detailed PBR textures."
-        }}
-        tags={["Blender", "Substance Painter", "PBR Texturing"]}
-        media={cyberCoreMedia}
-        orientation="right"
-        primaryButton={{ text: { es: "VER EN ARTSTATION", en: "VIEW ON ARTSTATION" }, href: "#" }}
-        secondaryButton={{ text: { es: "CÓDIGO DE SHADERS", en: "SHADER CODE" }, href: "#" }}
-        role={{
-          es: "Artista 3D y Programador de Shaders. Creé la malla geométrica optimizada en Blender, realicé el bake de mapas y texturizado en Substance Painter, e implementé el shader holográfico dinámico en Unity.",
-          en: "3D Artist and Shader Programmer. Created the optimized geometry in Blender, baked and textured the maps in Substance Painter, and implemented the dynamic holographic shader in Unity."
-        }}
-      />
+      {
+        featuredProjects.map((project) => (
+          <FeaturedProject
+            client:load
+            title={project.title}
+            context={project.context}
+            description={project.description}
+            tags={project.tags}
+            media={project.media}
+            orientation={project.orientation}
+            primaryButton={project.primaryButton}
+            secondaryButton={project.secondaryButton}
+            role={project.role}
+          />
+        ))
+      }
 
       <div class="flex justify-center mt-12">
         <a href="/proyectos" class="font-display text-4xl bg-p5-red text-p5-white px-12 py-6 -skew-x-[6deg] shadow-[8px_8px_0_0_#0F0F0F] hover:-translate-y-2 hover:shadow-[12px_12px_0_0_#0F0F0F] transition-all flex items-center gap-4 group">

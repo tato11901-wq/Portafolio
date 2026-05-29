@@ -3,38 +3,20 @@ import Layout from "../layouts/Layout.astro";
 import { TechTag } from "../components/p5/TechTag";
 import { P5Button } from "../components/p5/P5Button";
 import { ProjectCard } from "../components/p5/ProjectCard";
-import {
-  FeaturedProject,
-  type MediaItem,
-} from "../components/p5/FeaturedProject";
+import { FeaturedProject } from "../components/p5/FeaturedProject";
+import type { ProjectData } from "../types";
 import { CallingCard } from "../components/p5/CallingCard";
 import { StatHexagon } from "../components/p5/StatHexagon";
+import { TechIconsGrid } from "../components/p5/TechIcons";
+import { TestimonialCard } from "../components/p5/TestimonialCard";
 import { Image } from "astro:assets";
 import profileImage from "../Assets/Images/Foto de perfil.png";
+import proyectos from "../data/proyectos.json";
 
 import "../styles/global.css";
 
-// Mock Data for Projects
-const phantomStrideMedia: MediaItem[] = [
-  {
-    type: "video",
-    url: "/Assets/Proyectos/Referencia/2026-04-24 09-56-40.mkv",
-    filename: "DEMO_VIDEO.MKV",
-  },
-  {
-    type: "image",
-    url: "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194130.png",
-    filename: "SCREENSHOT_01.PNG",
-  },
-];
-
-const cyberCoreMedia: MediaItem[] = [
-  {
-    type: "image",
-    url: "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
-    filename: "MODEL_RENDER_01.PNG",
-  },
-];
+const proyectosTyped = proyectos as ProjectData[];
+const featuredProjects = proyectosTyped.filter((p) => p.featured);
 ---
 
 <Layout title="Design System - Portafolio P5">
@@ -342,6 +324,24 @@ const cyberCoreMedia: MediaItem[] = [
           </div>
         </div>
       </div>
+
+      <!-- Tech Stack Icons -->
+      <div class="space-y-8 mt-16">
+        <div class="flex items-center gap-4 mb-6">
+          <h3 class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2">
+            Tech Stack Icons
+          </h3>
+          <span class="font-mono text-xs bg-p5-black text-p5-white px-3 py-1 -skew-x-[6deg] opacity-80">
+            <span class="inline-block skew-x-[6deg]">svgl Library</span>
+          </span>
+        </div>
+        <p class="font-body text-base opacity-90 max-w-3xl leading-relaxed mb-8">
+          Iconos SVG de las tecnologías del stack, importados desde la librería <strong>svgl</strong>. 
+          Se renderizan como SVG inline con tratamiento monocromático para integrarse al sistema de diseño P5.
+          Al hacer hover, cambian al rojo de marca.
+        </p>
+        <TechIconsGrid client:load />
+      </div>
     </section>
 
     <!-- 3. COMPONENTES PRIMITIVOS (Botones, Tags y Contenedores) -->
@@ -618,36 +618,26 @@ const cyberCoreMedia: MediaItem[] = [
         Composite Components
       </h2>
 
-      <!-- Diálogo P5 -->
+      <!-- Testimonial Card -->
       <div class="space-y-4">
         <h3
           class="font-display text-4xl text-p5-red border-b-2 border-p5-red pb-2"
         >
-          Dialogue Box
+          Testimonial Card
         </h3>
-        <div
-          class="relative bg-p5-black p-6 border-4 border-p5-white min-h-[120px] -skew-y-[1deg] shadow-[12px_12px_0_0_#E50012]"
-        >
-          <div
-            class="absolute -top-6 left-8 bg-p5-red text-p5-white font-display text-2xl px-6 py-1 -skew-x-[12deg] border-2 border-p5-white"
-          >
-            <span class="inline-block skew-x-[12deg]">CAMILO SANDOVAL</span>
-          </div>
-          <p class="font-body text-p5-white text-lg leading-relaxed pt-2 pl-4">
-            Alejandro es un profesional apasionado por la tecnologia y el
-            desarrollo de software. Con experiencia en diversas areas de la
-            programacion, ha logrado crear proyectos innovadores y de calidad.
-          </p>
-          <div class="absolute bottom-4 right-4 animate-bounce">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="var(--color-p5-red)"
-              ><polygon points="0,0 20,0 10,20"></polygon></svg
-            >
-          </div>
-        </div>
+        <TestimonialCard
+          client:load
+          name="CAMILO SANDOVAL"
+          text={{
+            es: "Alejandro es un profesional apasionado por la tecnologia y el desarrollo de software. Con experiencia en diversas areas de la programacion, ha logrado crear proyectos innovadores y de calidad.",
+            en: "Alejandro is a passionate professional dedicated to technology and software development. With experience across multiple programming areas, he has created innovative, high-quality projects."
+          }}
+          linkedin="https://www.linkedin.com/"
+          role={{
+            es: "Compañero de carrera · Ingeniería Multimedia",
+            en: "Classmate · Multimedia Engineering"
+          }}
+        />
       </div>
 
       <!-- Contact Card -->
@@ -662,7 +652,7 @@ const cyberCoreMedia: MediaItem[] = [
           name="Alejandro Sandoval"
           email="asandoval123871@gmail.com"
           linkedin="https://www.linkedin.com/in/alejandro-sandoval-8a9209285/"
-          github="https://github.com/tato11901-wq"
+          github="https://github.com/ImJustSandie"
         />
       </div>
 
@@ -940,64 +930,35 @@ const cyberCoreMedia: MediaItem[] = [
         <span class="inline-block skew-x-[6deg]">Target Projects</span>
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <ProjectCard
-          client:visible
-          title="Proyect 1"
-          description="Proyecto realizado en unity para tatatatatatatata"
-          tags={["C#", "Unity", "Editor Tooling"]}
-          primaryButton={{ text: "SOURCE CODE", href: "#" }}
-          secondaryButton={{ text: "VIEW DOCS", href: "#" }}
-        />
-        <ProjectCard
-          client:visible
-          title="DinoGeek"
-          description="Pagina de noticias orientadas al mundo geek, Anime, Manga, Videojuegos, Cómics y más. "
-          tags={["HTML", "CSS", "JS", "C#"]}
-          variant="white"
-          primaryButton={{ text: "LIVE DEMO", href: "#" }}
-          secondaryButton={{ text: "COMPONENT DOCS", href: "#" }}
-        />
-        <ProjectCard
-          client:visible
-          title="Simulador Resonador"
-          description="Simulador de exploracion de la sala de un Resonador Magnético, Experiencia de Realidad Virtual realizada en Unity"
-          tags={["Unity", "VR", "C#"]}
-          primaryButton={{ text: "DOWNLOAD VR", href: "#" }}
-          secondaryButton={{ text: "SOURCE CODE", href: "#" }}
-        />
+        {proyectosTyped.slice(0, 3).map((p) => (
+          <ProjectCard
+            client:visible
+            title={p.title}
+            description={p.description.es}
+            tags={p.tags}
+            primaryButton={p.primaryButton ? { text: p.primaryButton.text.es, href: p.primaryButton.href } : undefined}
+            secondaryButton={p.secondaryButton ? { text: p.secondaryButton.text.es, href: p.secondaryButton.href } : undefined}
+          />
+        ))}
       </div>
     </section>
 
     <!-- 7. PROYECTOS DESTACADOS (CARRUSEL) -->
     <section class="flex flex-col gap-12 mt-16">
-      <FeaturedProject
-        client:load
-        title="PLANTAGOCHI"
-        context={{ es: "Contexto del Proyecto", en: "Project Context" }}
-        description={{
-          es: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        }}
-        tags={["Unity URP", "C# ASYNC"]}
-        media={phantomStrideMedia}
-        orientation="left"
-        primaryButton={{ text: { es: "VER DEMO", en: "WATCH DEMO" }, href: "#" }}
-        secondaryButton={{ text: { es: "CÓDIGO FUENTE", en: "SOURCE CODE" }, href: "#" }}
-      />
-
-      <FeaturedProject
-        client:load
-        title="SVELIATY"
-        context={{ es: "Contexto del Proyecto", en: "Project Context" }}
-        description={{
-          es: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          en: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }}
-        tags={["Blender", "Substance"]}
-        media={cyberCoreMedia}
-        orientation="right"
-        secondaryButton={{ text: { es: "DESCARGAR EXE", en: "DOWNLOAD EXE" }, href: "#" }}
-      />
+      {featuredProjects.slice(0, 2).map((p) => (
+        <FeaturedProject
+          client:load
+          title={p.title}
+          context={p.context}
+          description={p.description}
+          tags={p.tags}
+          media={p.media}
+          orientation={p.orientation}
+          primaryButton={p.primaryButton}
+          secondaryButton={p.secondaryButton}
+          role={p.role}
+        />
+      ))}
     </section>
   </div>
 </Layout>

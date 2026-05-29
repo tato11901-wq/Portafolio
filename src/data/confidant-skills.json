@@ -1,0 +1,99 @@
+[
+  {
+    "title": "UNITY ENGINE",
+    "rank": 8,
+    "percentage": 80,
+    "description": {
+      "es": "Experiencia avanzada desarrollando sistemas complejos, shaders en URP/HDRP y arquitecturas modulares para juegos 2D y 3D.",
+      "en": "Advanced experience building complex systems, URP/HDRP shaders, and modular architectures for 2D and 3D games."
+    },
+    "tags": [
+      { "name": "Unity", "icon": "Unity" },
+      { "name": "C#", "icon": "C#" },
+      { "name": "Blender", "icon": "Blender" }
+    ]
+  },
+  {
+    "title": {
+      "es": "DESARROLLO WEB",
+      "en": "WEB DEVELOPMENT"
+    },
+    "rank": 6,
+    "percentage": 60,
+    "description": {
+      "es": "Construcción de interfaces modernas con HTML, CSS, JavaScript, Astro, React, Preact y Tailwind CSS para experiencias web rápidas y modulares.",
+      "en": "Building modern interfaces with HTML, CSS, JavaScript, Astro, React, Preact and Tailwind CSS for fast, modular web experiences."
+    },
+    "tags": [
+      { "name": "HTML5", "icon": "HTML5" },
+      { "name": "CSS3", "icon": "CSS3" },
+      { "name": "JavaScript", "icon": "JavaScript" },
+      { "name": "Astro", "icon": "Astro" },
+      { "name": "React", "icon": "React" },
+      { "name": "Tailwind CSS", "icon": "Tailwind CSS" },
+      { "name": "Vite", "icon": "Vite" }
+    ]
+  },
+  {
+    "title": {
+      "es": "DESARROLLO MULTIPLATAFORMA",
+      "en": "CROSS-PLATFORM DEVELOPMENT"
+    },
+    "rank": 7,
+    "percentage": 70,
+    "description": {
+      "es": "Sólidos fundamentos en C#, Python y Java para scripting, automatización, desarrollo backend y herramientas en múltiples entornos.",
+      "en": "Strong foundations in C#, Python and Java for scripting, automation, backend development and tooling across multiple environments."
+    },
+    "tags": [
+      { "name": "C#", "icon": "C#" },
+      { "name": "Python", "icon": "Python" },
+      { "name": "Java", "icon": "Java" },
+      { "name": "TypeScript", "icon": "TypeScript" },
+      { "name": "Node.js", "icon": "Node.js" }
+    ]
+  },
+  {
+    "title": {
+      "es": "MODELADO / ESCULPIDO 3D",
+      "en": "3D MODELING / SCULPTING"
+    },
+    "rank": 6,
+    "percentage": 60,
+    "description": {
+      "es": "Modelado, esculpido y texturizado de assets 3D en Blender, Maya y Mudbox para integración en motores de videojuegos.",
+      "en": "Modeling, sculpting and texturing of 3D assets in Blender, Maya and Mudbox for integration into game engines."
+    },
+    "tags": [
+      { "name": "Blender", "icon": "Blender" }
+    ]
+  },
+  {
+    "title": {
+      "es": "DISEÑO DE EXPERIENCIAS",
+      "en": "EXPERIENCE DESIGN"
+    },
+    "rank": 6,
+    "percentage": 60,
+    "description": {
+      "es": "Diseño de wireframes, prototipos interactivos y sistemas de diseño enfocados en la experiencia de usuario final y la narrativa visual.",
+      "en": "Design of wireframes, interactive prototypes, and design systems focused on end-user experience and visual storytelling."
+    },
+    "tags": [
+      { "name": "Figma", "icon": "Figma" }
+    ]
+  },
+  {
+    "title": "GIT / GITHUB",
+    "rank": 7,
+    "percentage": 70,
+    "description": {
+      "es": "Control de versiones, flujos de trabajo colaborativos, gestión de ramas y repositorios para desarrollo en equipo y proyectos personales.",
+      "en": "Version control, collaborative workflows, branch management and repositories for team development and personal projects."
+    },
+    "tags": [
+      { "name": "Git", "icon": "Git" },
+      { "name": "GitHub", "icon": "GitHub" }
+    ]
+  }
+]

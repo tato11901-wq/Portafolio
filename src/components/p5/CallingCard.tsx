@@ -81,7 +81,7 @@ export const CallingCard: React.FC<CallingCardProps> = ({
             <div className="group/item flex flex-col sm:flex-row sm:items-center">
               <span className="text-p5-red w-28">GITHUB:</span>
               <a href={github} target="_blank" rel="noopener noreferrer" className="text-p5-white hover:bg-p5-white hover:text-p5-black transition-colors px-2 py-1 inline-block">
-                /tato11901-wq
+                /ImJustSandie
               </a>
             </div>
             {orcid && (

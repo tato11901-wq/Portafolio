@@ -36,6 +36,8 @@ export const P5Button: React.FC<P5ButtonProps> = ({
   return (
     <Element 
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${className}`}
       download={download as any}

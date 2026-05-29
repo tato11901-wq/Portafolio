@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { TechTag } from './TechTag';
 
+interface MediaItem {
+  type: string;
+  url: string;
+}
+
 interface ProjectCardProps {
   title: string;
   description: string;
   tags: string[];
   imageText?: string;
+  imageUrl?: string;
+  media?: MediaItem[];
+  role?: string;
   variant?: 'red' | 'white' | 'black' | 'red-card';
   primaryButton?: { text: string; href: string };
   secondaryButton?: { text: string; href: string };
@@ -17,6 +25,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   tags,
   imageText = "PROJECT_PREVIEW",
+  imageUrl,
+  media,
+  role,
   variant = 'red',
   primaryButton,
   secondaryButton,
@@ -26,6 +37,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   const isWhite = variant === 'white';
   const isBlack = variant === 'black';
   const isRedCard = variant === 'red-card';
+  const hasImage = Boolean(imageUrl);
 
   // Determine shadow color based on variant
   // isRed -> Red shadow
@@ -41,6 +53,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     : (isWhite ? 'hover:shadow-[14px_14px_0_0_#F4F4F4]' : 'hover:shadow-[14px_14px_0_0_#0F0F0F]');
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const allMedia = media && media.length > 0 ? media : (imageUrl ? [{ type: 'image', url: imageUrl }] : []);
+  const hasMultipleMedia = allMedia.length > 1;
 
   // Background and Text colors for the main card
   let cardBg = 'bg-p5-black text-p5-white';
@@ -55,7 +70,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     <>
       {/* Tarjeta pequeña (Siempre en el grid) */}
       <article 
-        onClick={() => setIsExpanded(true)}
+        onClick={() => { setIsExpanded(true); setCurrentMediaIndex(0); }}
         className={`
           ${cardBg} border-4 ${borderColor} p-4 
           flex flex-col gap-4 group 
@@ -66,10 +81,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         `}
       >
         <div className={`aspect-video w-full overflow-hidden relative border-2 ${isRed ? 'border-p5-white' : 'border-p5-black bg-p5-white'}`}>
-          <div className={`w-full h-full flex items-center justify-center font-display text-4xl tracking-widest relative ${isRed ? 'bg-p5-black text-p5-white' : 'bg-p5-white text-p5-black'}`}>
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
-            <span className="z-20 transform rotate-2 group-hover:scale-110 transition-transform duration-500">{imageText}</span>
-          </div>
+          {hasImage ? (
+            <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+          ) : (
+            <div className={`w-full h-full flex items-center justify-center font-display text-4xl tracking-widest relative ${isRed ? 'bg-p5-black text-p5-white' : 'bg-p5-white text-p5-black'}`}>
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
+              <span className="z-20 transform rotate-2 group-hover:scale-110 transition-transform duration-500">{imageText}</span>
+            </div>
+          )}
         </div>
         
         <div className="flex-1 flex flex-col">
@@ -106,12 +125,51 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               <span className="skew-x-[6deg]">X</span>
             </button>
 
-            {/* Visual del Modal */}
+            {/* Visual del Modal - Carrusel */}
             <div className={`w-full md:w-1/2 aspect-video overflow-hidden relative border-4 ${isRed ? 'border-p5-white' : 'border-p5-black bg-p5-white'}`}>
-              <div className={`w-full h-full flex items-center justify-center font-display text-5xl md:text-6xl tracking-widest relative ${isRed ? 'bg-p5-black text-p5-white' : 'bg-p5-white text-p5-black'}`}>
-                <div className="absolute inset-0 opacity-10 bg-halftone"></div>
-                <span className="z-20 transform -rotate-2">{imageText}</span>
-              </div>
+              {allMedia.length > 0 ? (
+                <>
+                  <div className="w-full h-full relative">
+                    {allMedia[currentMediaIndex].type === 'video' ? (
+                      <video key={currentMediaIndex} src={allMedia[currentMediaIndex].url} controls className="w-full h-full object-cover" />
+                    ) : (
+                      <img key={currentMediaIndex} src={allMedia[currentMediaIndex].url} alt={`${title} ${currentMediaIndex + 1}`} className="w-full h-full object-cover" />
+                    )}
+                  </div>
+
+                  {hasMultipleMedia && (
+                    <>
+                      <button
+                        onClick={() => setCurrentMediaIndex((prev) => (prev === 0 ? allMedia.length - 1 : prev - 1))}
+                        className={`absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center font-display text-2xl border-4 transition-colors z-10 -skew-x-[6deg] ${isRed ? 'bg-p5-white text-p5-black border-p5-black hover:bg-p5-red hover:text-p5-white' : 'bg-p5-black text-p5-white border-p5-white hover:bg-p5-red'}`}
+                      >
+                        <span className="skew-x-[6deg]">‹</span>
+                      </button>
+                      <button
+                        onClick={() => setCurrentMediaIndex((prev) => (prev === allMedia.length - 1 ? 0 : prev + 1))}
+                        className={`absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center font-display text-2xl border-4 transition-colors z-10 -skew-x-[6deg] ${isRed ? 'bg-p5-white text-p5-black border-p5-black hover:bg-p5-red hover:text-p5-white' : 'bg-p5-black text-p5-white border-p5-white hover:bg-p5-red'}`}
+                      >
+                        <span className="skew-x-[6deg]">›</span>
+                      </button>
+
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        {allMedia.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setCurrentMediaIndex(i)}
+                            className={`w-3 h-3 border-2 transition-all ${i === currentMediaIndex ? (isRed ? 'bg-p5-red border-p5-black scale-125' : 'bg-p5-white border-p5-black scale-125') : (isRed ? 'bg-p5-white/50 border-p5-black' : 'bg-p5-black/50 border-p5-white')}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </>
+              ) : (
+                <div className={`w-full h-full flex items-center justify-center font-display text-5xl md:text-6xl tracking-widest relative ${isRed ? 'bg-p5-black text-p5-white' : 'bg-p5-white text-p5-black'}`}>
+                  <div className="absolute inset-0 opacity-10 bg-halftone"></div>
+                  <span className="z-20 transform -rotate-2">{imageText}</span>
+                </div>
+              )}
             </div>
 
             {/* Info del Modal */}
@@ -120,7 +178,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {title}
               </h3>
               <p className="font-body text-lg md:text-xl text-p5-white opacity-90 mb-8 flex-1">
-                {description}
+                {role || description}
               </p>
               
               <div className="flex flex-wrap gap-2 mb-8">
@@ -133,14 +191,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               {(primaryButton || secondaryButton) && (
                 <div className="flex flex-wrap gap-4 mt-auto">
                   {primaryButton && (
-                    <a href={primaryButton.href} className="inline-block">
-                      <span className={`inline-block px-8 py-3 font-display text-3xl uppercase tracking-widest -skew-x-[6deg] border-4 shadow-sm transition-all duration-300 hover:rotate-0 hover:translate-x-1 hover:-translate-y-1 ${isRed ? 'bg-p5-red text-p5-white border-p5-black hover:bg-p5-white hover:text-p5-red hover:shadow-[6px_6px_0_0_#0F0F0F]' : 'bg-p5-black text-p5-white border-p5-white hover:bg-p5-red hover:border-p5-black hover:shadow-[6px_6px_0_0_#F4F4F4]'}`}>
+                    <a href={primaryButton.href} target="_blank" rel="noopener noreferrer" className="inline-block">
+                      <span className={`inline-block px-8 py-3 font-display text-3xl uppercase tracking-widest -skew-x-[6deg] border-4 shadow-sm transition-all duration-300 hover:rotate-0 hover:translate-x-1 hover:-translate-y-1 ${isRed ? 'bg-p5-red text-p5-white border-p5-black hover:bg-p5-white hover:text-p5-red hover:shadow-[6px_6px_0_0_#0F0F0F]' : 'bg-p5-black text-p5-white border-p5-black hover:bg-p5-red hover:border-p5-black hover:shadow-[6px_6px_0_0_#F4F4F4]'}`}>
                         <span className="inline-block skew-x-[6deg]">{primaryButton.text}</span>
                       </span>
                     </a>
                   )}
                   {secondaryButton && (
-                    <a href={secondaryButton.href} className="inline-block">
+                    <a href={secondaryButton.href} target="_blank" rel="noopener noreferrer" className="inline-block">
                       <span className={`inline-block px-8 py-3 font-display text-3xl uppercase tracking-widest -skew-x-[6deg] border-4 shadow-sm transition-all duration-300 hover:rotate-0 hover:translate-x-1 hover:-translate-y-1 ${isRed ? 'bg-transparent text-p5-white border-p5-white hover:bg-p5-white hover:text-p5-black hover:shadow-[6px_6px_0_0_#E50012]' : 'bg-transparent text-p5-black border-p5-black hover:bg-p5-black hover:text-p5-white hover:shadow-[6px_6px_0_0_#E50012]'}`}>
                         <span className="inline-block skew-x-[6deg]">{secondaryButton.text}</span>
                       </span>

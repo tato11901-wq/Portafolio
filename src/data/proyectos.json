@@ -1,0 +1,423 @@
+[
+  {
+    "id": "sveliaty-combat-system",
+    "title": "Sveliaty Combat System",
+    "featured": true,
+    "category": "dev",
+    "context": {
+      "es": "Desarrollo de Videojuegos",
+      "en": "Game Development"
+    },
+    "description": {
+      "es": "Sveliaty es un roguelike táctico por turnos con mecánicas de dados, cartas de afinidad y un sistema de maldiciones que añaden aleatoriedad. Incluye un modo Boss Rush de hasta 20 batallas progresivas con enemigos que escalan en dificultad.",
+      "en": "Sveliaty is a tactical turn-based roguelike with dice mechanics, affinity cards, and a curse system that adds rogue-like randomness. Features a Boss Rush mode with up to 20 progressive battles with scaling difficulty."
+    },
+    "tags": ["Unity", "C#", "Blender", "Substance"],
+    "media": [
+      {
+        "type": "video",
+        "url": "/Assets/Proyectos/Referencia/2026-04-24 09-56-40.mkv",
+        "filename": "DEMO_VIDEO.MKV"
+      },
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194130.png",
+        "filename": "SCREENSHOT_01.PNG"
+      }
+    ],
+    "orientation": "left",
+    "primaryButton": {
+      "text": { "es": "VER DEMO", "en": "WATCH DEMO" },
+      "href": "https://github.com/ImJustSandie/Sveliaty-Combat-System"
+    },
+    "secondaryButton": {
+      "text": { "es": "CÓDIGO FUENTE", "en": "SOURCE CODE" },
+      "href": "https://github.com/ImJustSandie/Sveliaty-Combat-System"
+    },
+    "role": {
+      "es": "Diseñador de juego y programador principal. Diseñé e implementé la arquitectura del sistema de combate por turnos con arquitectura orientada a eventos (Publisher/Subscriber), sistema de dados y cartas de afinidad (Fuerza, Agilidad, Destreza), sistema de maldiciones con randomización, y guardado automático mediante JSON. Usé ScriptableObjects para datos balanceables y DOTween para animaciones procedurales.",
+      "en": "Game designer and lead programmer. Designed and implemented the turn-based combat system with event-driven architecture (Publisher/Subscriber), dice and affinity card system (Strength, Agility, Dexterity), curse system with randomization, and JSON auto-save. Used ScriptableObjects for balance data and DOTween for procedural animations."
+    }
+  },
+  {
+    "id": "plantagochi-web",
+    "title": "PLANTAGOCHI WEB",
+    "featured": true,
+    "category": "dev",
+    "context": {
+      "es": "Proyecto Académico",
+      "en": "Academic Project"
+    },
+    "description": {
+      "es": "Módulo web del proyecto Treegemon. Planta virtual con 4 etapas de evolución (Semilla → Brote → Planta → Ent), 3 minijuegos (Agua, Compost, Sol), sistema de inventario con filtros, cooldowns y deterioro por inactividad. Backend simulado con localStorage.",
+      "en": "Web module of the Treegemon project. Virtual plant with 4 evolution stages (Seed → Sprout → Plant → Ent), 3 minigames (Water, Compost, Sun), inventory system with filters, cooldowns and decay over time. Simulated backend with localStorage."
+    },
+    "tags": ["Astro", "Tailwind", "TypeScript", "Preact"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
+        "filename": "MODEL_RENDER_01.PNG"
+      }
+    ],
+    "orientation": "right",
+    "primaryButton": {
+      "text": { "es": "CÓDIGO FUENTE", "en": "SOURCE CODE" },
+      "href": "https://github.com/ImJustSandie/Treegimon-Plantagochi-Web"
+    },
+    "secondaryButton": {
+      "text": { "es": "PÁGINA EN VIVO", "en": "LIVE PAGE" },
+      "href": "https://plantagochiweb.vercel.app/"
+    },
+    "role": {
+      "es": "Desarrollador full-stack. Implementé la arquitectura completa con Astro + Preact + Tailwind, usando Preact Signals para el manejo de estado. Diseñé e implementé los 3 minijuegos (Agua, Compost, Sol), el sistema de evolución por etapas con animaciones de spritesheet, el inventario con filtros por estado/urgencia/categoría, y el sistema de cooldowns con deterioro progresivo. Backend simulado vía localStorage.",
+      "en": "Full-stack developer. Implemented the complete architecture with Astro + Preact + Tailwind, using Preact Signals for state management. Designed and implemented the 3 minigames (Water, Compost, Sun), the stage-based evolution system with spritesheet animations, inventory with filters by status/urgency/category, and the cooldown system with progressive decay. Simulated backend via localStorage."
+    }
+  },
+  {
+    "id": "whispers-in-letters",
+    "title": "WHISPERS IN LETTERS",
+    "featured": true,
+    "category": "dev",
+    "context": {
+      "es": "Desarrollo de Videojuegos",
+      "en": "Game Development"
+    },
+    "description": {
+      "es": "Experiencia narrativa interactiva basada en 'El Mundo de Sofía'. Plantea dilemas filosóficos de Schopenhauer, Nietzsche, Hegel y los Estoicos; las decisiones del jugador afectan el diálogo y el desenlace de la historia.",
+      "en": "Interactive narrative experience based on 'Sophie's World'. Presents philosophical dilemmas from Schopenhauer, Nietzsche, Hegel, and the Stoics; player choices affect dialogue and story ending."
+    },
+    "tags": ["Unity", "C#", "Ink", "Narrative Design"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
+        "filename": "MODEL_RENDER_01.PNG"
+      }
+    ],
+    "orientation": "left",
+    "primaryButton": {
+      "text": { "es": "CÓDIGO FUENTE", "en": "SOURCE CODE" },
+      "href": "https://github.com/ImJustSandie/Whispers-In-Letters"
+    },
+    "secondaryButton": {
+      "text": { "es": "VER DEMO", "en": "WATCH DEMO" },
+      "href": "https://github.com/ImJustSandie/Whispers-In-Letters"
+    },
+    "role": {
+      "es": "Diseñador narrativo y programador. Implementé la arquitectura del juego en Unity con sistema de diálogos ramificados usando Ink, managers modulares (LevelManager, GameManager) con ScriptableObjects para datos, y sistema de guardado JSON para persistencia de progreso.",
+      "en": "Narrative designer and programmer. Implemented the game architecture in Unity with branching dialogue system using Ink, modular managers (LevelManager, GameManager) with ScriptableObjects for data, and JSON save system for progress persistence."
+    }
+  },
+  {
+    "id": "clanksworth",
+    "title": "CLANKSWORTH - STEAMPUNK ROBOT",
+    "featured": true,
+    "category": "art",
+    "context": {
+      "es": "Modelado 3D & Personaje",
+      "en": "3D Modeling & Character"
+    },
+    "description": {
+      "es": "Pequeño robot steampunk construido de cobre, engranajes y curiosidad. Un autómata antiguo que de alguna manera mantuvo su chispa con vida.",
+      "en": "A small steampunk robot built from copper, gears, and curiosity. An old automaton that somehow kept its spark alive."
+    },
+    "tags": ["Blender", "Maya", "Substance Painter", "PBR Texturing"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/clanksworth.jpeg",
+        "filename": "CLANKSWORTH.JPEG"
+      }
+    ],
+    "orientation": "right",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/clanksworth-steampunk-robot-65bf1b56bd8346249ed986324c7aa3ef"
+    },
+    "role": {
+      "es": "Artista 3D. Modelé y esculpí el robot en Blender con detalle de engranajes y cobre, realicé el texturizado PBR en Substance Painter, y optimicé la malla para renderizado en tiempo real.",
+      "en": "3D Artist. Modeled and sculpted the robot in Blender with detailed gears and copper, did PBR texturing in Substance Painter, and optimized the mesh for real-time rendering."
+    }
+  },
+  {
+    "id": "heather",
+    "title": "HEATHER, THE CLUMSY DEMON",
+    "featured": true,
+    "category": "art",
+    "context": {
+      "es": "Modelado 3D & Personaje",
+      "en": "3D Modeling & Character"
+    },
+    "description": {
+      "es": "Heather es una joven demonio con personalidad juguetona y expresiva. Parte de la serie 'Cacería Nocturna'. A diferencia de otros de su especie, no es particularmente intimidante, a menudo parece torpe y despreocupada.",
+      "en": "Heather is a young demon with a playful and expressive personality. Part of the 'Cacería Nocturna' series. Unlike others of her kind, she is not particularly intimidating, often coming across as clumsy and carefree."
+    },
+    "tags": ["Blender", "ZBrush", "Substance Painter", "PBR Texturing"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/heather.jpeg",
+        "filename": "HEATHER.JPEG"
+      }
+    ],
+    "orientation": "left",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/heather-the-clumsy-demon-caceria-nocturna-wip-09c29df6634c4f21807416809395bdcc"
+    },
+    "role": {
+      "es": "Artista 3D. Diseñé y esculpí el personaje en Blender y ZBrush, realicé el texturizado PBR en Substance Painter, y configuré la iluminación y presentación en Sketchfab para capturar la personalidad del personaje.",
+      "en": "3D Artist. Designed and sculpted the character in Blender and ZBrush, did PBR texturing in Substance Painter, and set up lighting and presentation in Sketchfab to capture the character's personality."
+    }
+  },
+  {
+    "id": "adam",
+    "title": "ADAM, THE CALM HUMAN",
+    "featured": true,
+    "category": "art",
+    "context": {
+      "es": "Modelado 3D & Personaje",
+      "en": "3D Modeling & Character"
+    },
+    "description": {
+      "es": "Adam es un joven tranquilo y equilibrado que valora la estabilidad y la rutina. Se expresa mediante acciones más que con palabras. Parte de la serie 'Cacería Nocturna' — pieza complementaria de Heather.",
+      "en": "Adam is a calm and grounded young man who values stability and routine. He expresses himself through actions rather than words. Part of the 'Cacería Nocturna' series — companion piece to Heather."
+    },
+    "tags": ["Blender", "ZBrush", "Substance Painter", "PBR Texturing"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/adam.jpeg",
+        "filename": "ADAM.JPEG"
+      }
+    ],
+    "orientation": "right",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/adam-the-calm-human-caceria-nocturnawip-091b41eaed8844e28ce8417556f20d77"
+    },
+    "role": {
+      "es": "Artista 3D. Modelé y esculpí el personaje en Blender y ZBrush, realicé el texturizado PBR en Substance Painter, y configuré la escena en Sketchfab para mantener la coherencia visual con la serie Cacería Nocturna.",
+      "en": "3D Artist. Modeled and sculpted the character in Blender and ZBrush, did PBR texturing in Substance Painter, and set up the scene in Sketchfab to maintain visual consistency with the Cacería Nocturna series."
+    }
+  },
+  {
+    "id": "resonador-vr",
+    "title": "RESONADOR VR",
+    "featured": false,
+    "category": "dev",
+    "context": {
+      "es": "Realidad Virtual",
+      "en": "Virtual Reality"
+    },
+    "description": {
+      "es": "Simulador en realidad virtual para dispositivos móviles (VR BOX) que permite explorar una sala de resonancia magnética. Experiencia inmersiva diseñada para conocer el funcionamiento del equipo y la normativa de seguridad.",
+      "en": "Virtual reality simulator for mobile devices (VR BOX) that lets you explore an MRI room. Immersive experience designed to teach how the equipment works and safety regulations."
+    },
+    "tags": ["Unity", "VR", "C#", "Oculus"],
+    "media": [
+      {
+        "type": "video",
+        "url": "/Assets/Proyectos/Referencia/2026-04-24 09-56-40.mkv",
+        "filename": "DEMO_VIDEO.MKV"
+      },
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194130.png",
+        "filename": "SCREENSHOT_01.PNG"
+      }
+    ],
+    "orientation": "left",
+    "primaryButton": {
+      "text": { "es": "DESCARGAR APP", "en": "DOWNLOAD APP" },
+      "href": "https://github.com/ImJustSandie/Simulador-de-ResonadorMagnetico"
+    },
+    "secondaryButton": {
+      "text": { "es": "CÓDIGO FUENTE", "en": "SOURCE CODE" },
+      "href": "https://github.com/ImJustSandie/Simulador-de-ResonadorMagnetico"
+    },
+    "role": {
+      "es": "Desarrollador XR y de simulación física. Encargado del diseño e implementación de las mecánicas de interacción con mandos VR en Unity, el sistema de colisiones por fuerzas electromagnéticas, y guías de usuario estructuradas basadas en normativas médicas reales.",
+      "en": "XR & physical simulation developer. Responsible for designing and implementing VR controller interaction mechanics in Unity, electromagnetic force-based collision systems, and structured user guides modeled after real medical regulations."
+    }
+  },
+  {
+    "id": "dino-geek",
+    "title": "DINO GEEK",
+    "featured": false,
+    "category": "dev",
+    "context": {
+      "es": "Aplicación Web",
+      "en": "Web Application"
+    },
+    "description": {
+      "es": "Página de noticias orientada al mundo geek, abarcando Anime, Manga, Videojuegos, Cómics y más, usando una estética vibrante. Proyecto académico de la asignatura Diseño de Interfaces.",
+      "en": "News website oriented towards geek culture, covering Anime, Manga, Video Games, Comics and more, using a vibrant aesthetic. Academic project for the Interface Design course."
+    },
+    "tags": ["HTML", "CSS", "TypeScript", "React"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/Captura de pantalla 2026-05-08 194455.png",
+        "filename": "MODEL_RENDER_01.PNG"
+      }
+    ],
+    "orientation": "left"
+  },
+  {
+    "id": "ado-skateboard",
+    "title": "ADO SKATEBOARD",
+    "featured": false,
+    "category": "art",
+    "context": {
+      "es": "Texturizado 3D",
+      "en": "3D Texturing"
+    },
+    "description": {
+      "es": "Skateboard con artwork de las canciones 'RuLe' y 'Odo' de ADO. Participante del Sketchfab Texturing Challenge. Modelo base de Johnson-Martin con texturizado original.",
+      "en": "Skateboard featuring artwork from ADO's songs 'RuLe' and 'Odo'. Entry for the Sketchfab Texturing Challenge. Base model by Johnson-Martin with original texturing."
+    },
+    "tags": ["Maya", "Substance Painter", "Photoshop", "PBR Texturing"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/ado-skateboard.jpeg",
+        "filename": "ADO_SKATEBOARD.JPEG"
+      }
+    ],
+    "orientation": "right",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/ado-skateboard-sketchfab-texturing-challenge-6e61719e8d36483caa2ad5af65e11287"
+    },
+    "role": {
+      "es": "Artista de texturas. Ajusté los UVs en Maya, realicé el texturizado completo en Substance Painter, y creé los artworks personalizados en Photoshop inspirados en las canciones de ADO.",
+      "en": "Texture artist. Adjusted UVs in Maya, did the complete texturing in Substance Painter, and created custom artworks in Photoshop inspired by ADO's songs."
+    }
+  },
+  {
+    "id": "herramientas",
+    "title": "LAS SAGRADAS HERRAMIENTAS",
+    "featured": false,
+    "category": "dev",
+    "context": {
+      "es": "Scripts y Utilidades",
+      "en": "Scripts & Utilities"
+    },
+    "description": {
+      "es": "Colección de scripts Python de uso personal: AstroCreator (scaffolding de proyectos Astro con múltiples frameworks UI), ApagarPC (temporizador gráfico de apagado), y yt_downloader (descargador de YouTube local sin anuncios).",
+      "en": "Personal Python utility scripts collection: AstroCreator (Astro project scaffolding with multiple UI frameworks), ApagarPC (graphical shutdown timer), and yt_downloader (ad-free local YouTube downloader)."
+    },
+    "tags": ["Python", "CLI", "Astro"],
+    "orientation": "right"
+  },
+  {
+    "id": "my-personal-cave",
+    "title": "MY PERSONAL CAVE",
+    "featured": false,
+    "category": "art",
+    "context": {
+      "es": "Ambiente 3D",
+      "en": "3D Environment"
+    },
+    "description": {
+      "es": "Modelo 3D estilizado de una habitación personal con estética gamer y anime. Incluye setup de gaming, iluminación RGB y pósters de anime en un ambiente oscuro y acogedor.",
+      "en": "A stylized 3D model of a personal bedroom with a gamer and anime fan aesthetic. Features a gaming setup, RGB lighting, and anime posters within a dark, cozy environment."
+    },
+    "tags": ["Maya", "Blender", "PBR Texturing"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/my-personal-cave.jpeg",
+        "filename": "MY_PERSONAL_CAVE.JPEG"
+      }
+    ],
+    "orientation": "left",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/my-personal-cave-e52850fcfaa94d84a2434c63f7e05a16"
+    }
+  },
+  {
+    "id": "the-knight-hollow-knight",
+    "title": "THE KNIGHT [HOLLOW KNIGHT]",
+    "featured": false,
+    "category": "art",
+    "context": {
+      "es": "Fan Art 3D",
+      "en": "3D Fan Art"
+    },
+    "description": {
+      "es": "Interpretación 3D estilizada del Caballero de Hollow Knight, con un enfoque más oscuro y abstracto. Un homenaje a uno de los indie protagonists favoritos del artista.",
+      "en": "A stylized 3D interpretation of the Knight from Hollow Knight, designed with a slightly darker and more abstract twist. A tribute to one of the artist's favorite indie protagonists."
+    },
+    "tags": ["Blender", "Substance Painter", "PBR Texturing"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/the-knight.jpeg",
+        "filename": "THE_KNIGHT.JPEG"
+      }
+    ],
+    "orientation": "right",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/the-knight-hollow-knight-2ae191917cd24fca8e0e0e65b1b47c5d"
+    }
+  },
+  {
+    "id": "persona-4-tv",
+    "title": "PERSONA 4 GOLDEN TV",
+    "featured": false,
+    "category": "art",
+    "context": {
+      "es": "Props 3D",
+      "en": "3D Props"
+    },
+    "description": {
+      "es": "Televisión de estilo retro inspirada en la estética de Persona 4 Golden. Un homenaje al juego con diseño estilizado y texturas nostálgicas.",
+      "en": "A retro-style television inspired by the aesthetics of Persona 4 Golden. A tribute to the game with stylized design and nostalgic textures."
+    },
+    "tags": ["Blender", "Substance Painter", "Photoshop"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/persona-4-tv.jpeg",
+        "filename": "PERSONA_4_TV.JPEG"
+      }
+    ],
+    "orientation": "left",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/persona-4-golden-tv-0b32b73253244badb8ca3690acb0b2ce"
+    }
+  },
+  {
+    "id": "progressive-knife",
+    "title": "PROGRESSIVE KNIFE EVANGELION",
+    "featured": false,
+    "category": "art",
+    "context": {
+      "es": "Props 3D",
+      "en": "3D Props"
+    },
+    "description": {
+      "es": "WIP basado en los concept arts de la réplica de Movic del Progressive Knife de Neon Genesis Evangelion. Modelado y texturizado en progreso.",
+      "en": "WIP based on Movic's replica concept arts of the Progressive Knife from Neon Genesis Evangelion. Modeling and texturing in progress."
+    },
+    "tags": ["Maya", "Blender", "Substance Painter"],
+    "media": [
+      {
+        "type": "image",
+        "url": "/Assets/Proyectos/Referencia/progressive-knife.jpeg",
+        "filename": "PROGRESSIVE_KNIFE.JPEG"
+      }
+    ],
+    "orientation": "right",
+    "primaryButton": {
+      "text": { "es": "VER EN SKETCHFAB", "en": "VIEW ON SKETCHFAB" },
+      "href": "https://sketchfab.com/3d-models/progressive-knife-evangelion-wip-4a96e81089ce4d4793414dc6845eae64"
+    }
+  }
+]

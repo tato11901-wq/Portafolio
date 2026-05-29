@@ -27,6 +27,12 @@ const { currentPath } = Astro.props;
         <span class="skew-x-[6deg] block lang-en">ABOUT ME</span>
       </a>
     </li>
+    <li>
+      <a href="/referencias" class={`font-display text-lg md:text-2xl tracking-widest transition-colors -skew-x-[6deg] inline-block ${currentPath === '/referencias' ? 'text-p5-red border-b-2 border-p5-red' : 'text-p5-white hover:text-p5-red'}`}>
+        <span class="skew-x-[6deg] block lang-es">REFERENCIAS</span>
+        <span class="skew-x-[6deg] block lang-en">REFERENCES</span>
+      </a>
+    </li>
   </ul>
 
   <div class="flex-1 flex justify-end">

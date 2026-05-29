@@ -8,6 +8,7 @@ interface ProjectViewsProps {
 
 export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, artProjects }) => {
   const [activeView, setActiveView] = useState<'dev' | 'art'>('dev');
+  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
 
   useEffect(() => {
     // Modify body background and colors based on view
@@ -29,12 +30,15 @@ export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, artProj
     };
   }, [activeView]);
 
-  const currentProjects = activeView === 'dev' ? devProjects : artProjects;
+  const baseProjects = activeView === 'dev' ? devProjects : artProjects;
+  const currentProjects = showFeaturedOnly
+    ? baseProjects.filter((p) => p.featured)
+    : baseProjects;
 
   return (
     <div className="w-full">
       {/* View Switcher Tabs */}
-      <div className="flex justify-center mb-16 relative z-10">
+      <div className="flex justify-center mb-8 relative z-10">
         <div className="bg-p5-black border-4 border-p5-white flex p-2 shadow-hard-white -skew-x-[6deg]">
           <button
             onClick={() => setActiveView('dev')}
@@ -60,6 +64,22 @@ export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, artProj
         </div>
       </div>
 
+      {/* Featured Filter Toggle */}
+      <div className="flex justify-center mb-12 relative z-10">
+        <button
+          onClick={() => setShowFeaturedOnly((prev) => !prev)}
+          className={`font-display text-lg tracking-widest uppercase border-2 px-6 py-2 transition-all -skew-x-[6deg] ${
+            showFeaturedOnly
+              ? 'bg-p5-red text-p5-white border-p5-white shadow-[4px_4px_0_0_#E50012]'
+              : 'bg-transparent text-[var(--text-color)] border-adaptive hover:bg-p5-red/10'
+          }`}
+        >
+          <span className="inline-block skew-x-[6deg]">
+            {showFeaturedOnly ? '★' : '☆'} <span className="lang-es">Solo destacados</span><span className="lang-en">Featured only</span>
+          </span>
+        </button>
+      </div>
+
       {/* Projects Grid List */}
       <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500`}>
         {currentProjects.map((proj, idx) => (
@@ -69,6 +89,9 @@ export const ProjectViews: React.FC<ProjectViewsProps> = ({ devProjects, artProj
             description={proj.description}
             tags={proj.tags}
             imageText={proj.title}
+            imageUrl={proj.mediaUrl}
+            media={proj.media}
+            role={proj.role}
             variant={idx % 2 === 0 ? 'red' : 'white'}
             primaryButton={proj.primaryButton}
             secondaryButton={proj.secondaryButton}
